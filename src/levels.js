@@ -3,10 +3,13 @@
 
   function setupPlayer(startX, startY) {
     var player = Crafty.e("Player").at(startX, startY);
-    Crafty.e("Camera").camera(player);
+    Crafty.e("Camera").cameraFocus(player);
   }
 
   function testlevel() {
+    Crafty.e("Level")
+      .bounds(700, 1000);
+    
     // Ground
     Crafty.e("Ground")
       .attr({
