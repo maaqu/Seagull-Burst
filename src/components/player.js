@@ -11,6 +11,7 @@
 	.onHit("Solid", function() {
           this.stopMovement();
         });
+      this.health = 8;
       this.bind("Moved", function(old) {
         if (this.hit("Obstacle")) {
           this.x = old.x;
@@ -23,8 +24,20 @@
       });
       
       this.bind("EnterFrame", this._playerFrame);
+
+      this.bind("LoseHealth", this._loseHealth);
     },
 
+    _loseHealth: function(amount) {
+      this.health -= amount;
+      if (this.health <= 0) {
+	this.deathAnimation();
+	this.trigger("Death");
+      }
+    },
+    deathAnimation: function() {
+    // TODO: kuolema-animaatio
+    },
     _playerFrame: function() {
       // On frame, check:
 
