@@ -24,14 +24,42 @@ Crafty.scene('Menu', function() {
     .tween({alpha: 1.0}, 30)
     .text('Menu!')
     .css({ "text-align": "center" })
-
-  this.restart_game = this.bind('KeyDown', function(e) {
+  var newgame = Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 0.0, y: 300, w: 800 })
+    .tween({alpha: 1.0}, 30)
+    .text('New game')
+    .css({ "text-align": "center" })
+  var credits = Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 0.0, y: 350, w: 800 })
+    .tween({alpha: 1.0}, 30)
+    .text('Credits')
+    .css({ "text-align": "center" }) 
+  newgame.tween({alpha: 0.5}, 30)
+  var texts = [newgame, credits];      
+  var selectedindex = 0;
+  this.bind('KeyDown', function(e) {
+    console.log("sasdfa"+selectedindex);
     if(e.key == Crafty.keys['ENTER']) {
-      Crafty.scene('Level1');
+      if (selectedindex == 0){Crafty.scene('Level1');}
+      else if (selectedindex == 1){Crafty.scene('Credits');}      
+    }
+    else if(e.key == Crafty.keys['UP_ARROW']) {
+      if (selectedindex > 0){
+        texts[selectedindex].tween({alpha: 1.0}, 20)
+        selectedindex = selectedindex-1
+        texts[selectedindex].tween({alpha: 0.5}, 20)        
+      }
+    }
+    else if(e.key == Crafty.keys['DOWN_ARROW']) {
+      if (selectedindex < texts.length-1){
+        texts[selectedindex].tween({alpha: 1.0}, 20)      
+        selectedindex = selectedindex+1
+        texts[selectedindex].tween({alpha: 0.5}, 20)        
+      }
     }
   });
 }, function() { //ONKO TARPEELLINEN?
-  this.unbind('ENTER', this.restart_game);
+  this.unbind('KeyDown', this.restart_game);
 });
 
 //Loading scene (play if needs to get something)
@@ -75,7 +103,12 @@ Crafty.scene('Death', function() {});
 Crafty.scene('Victory', function() {});
 
 //Credits scene
-Crafty.scene('Credits', function() {});
+Crafty.scene('Credits', function() {
+  text2 = Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:200 })
+    .text('CREDITS!')
+    .css({ "text-align": "center" })
+});
 
 //Hiscore scene
 Crafty.scene('Hiscore', function() {})
