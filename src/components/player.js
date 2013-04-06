@@ -8,12 +8,11 @@
         .twoway(4.0, 4.0)
         .gravity('Obstacle')
         .gravityConst(0.1)
-        .onHit("Solid", function() {
-          this.stopMovement();
+        .onHit("Solid", function(hitdata) {
+          this.hitSolid(hitdata);
         })
         .onHit("Shit", function() {
-	this.trigger("LoseHealth", 1);
-	
+	  this.trigger("LoseHealth", 1);
         })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
@@ -34,6 +33,15 @@
         } else {
           this.stop();
         }
+      });
+
+      this.bind("KeyDown", function() {
+        if(this.isDown("Z")) {
+          this.ants();
+        }
+      });
+      this.attr({
+        carried: false
       });
       
       this.attr({
@@ -66,12 +74,36 @@
 
     },
 
+    hitSolid: function(hitdata) {
+      // Encountered a solid obstacle?
+      // If we're being carried, transition on top of it
+      if(this.carried)
+        this.carriedOverObstacle(hitdata);
+      else
+        this.stopMovement();
+    },
+
     stopMovement: function() {
       this._speed = 0;
       if (this._movement) {
         this.x -= this._movement.x;
         this.y -= this._movement.y;
       }
+    },
+
+    carriedOverObstacle: function() {
+      // TODO
+    },
+
+    ants: function() {
+      // Spend HP
+      this.trigger("LoseHealth", 1);
+      this.carried = true;
+
+      // TODO: Change sprite to ant-carried
+
+      
+      // TODO: Change collision box to flat
     }
   });
 }());
