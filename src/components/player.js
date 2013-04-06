@@ -3,7 +3,7 @@
 
   Crafty.c('Player', {
     init: function() {
-      this.requires('Actor, Twoway, Gravity, Collision, SpriteAnimation, spr_player, LevelBounded')
+      this.requires('Actor, Collision, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player')
         .twoway(4.0, 4.0)
         .gravity('Obstacle')
         .gravityConst(0.1)
@@ -55,8 +55,12 @@
 
     _loseHealth: function(amount) {
       this.health -= amount;
-      this.animate('PlayerMovingRight', 0, 8-this.health, 7);
-      this.animate('PlayerMovingLeft', 0, 17-this.health, 7);
+
+      // Switch to lower HP form
+      this.animate('PlayerMovingRight', 0, 8 - this.health, 7);
+      this.animate('PlayerMovingLeft', 0, 17 - this.health, 7);
+
+      // TODO: Get current frame position, move to it's lower HP form
       this.animate('PlayerMovingRight', 0, 0);
       this.animate('PlayerMovingLeft', 0, 0);
 
@@ -99,6 +103,10 @@
       // Spend HP
       this.trigger("LoseHealth", 1);
       this.carried = true;
+      this.delay(function() {
+        this.carried = false;
+        console.log("Carry-walk over");
+      }, 5000);
 
       // TODO: Change sprite to ant-carried
 
