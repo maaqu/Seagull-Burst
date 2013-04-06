@@ -8,7 +8,15 @@
         .color('rgb(184, 143, 143)')
         .gravity('Obstacle')
         .gravityConst(0.1);
-
+	.onHit("Solid", function() {
+          this.stopMovement();
+        });
+      this.bind("Moved", function(old) {
+        if (this.hit("Obstacle")) {
+          this.x = old.x;
+          this.y = old.y;
+        }
+      });
       this.attr({
         w: 30,
         h: 30
@@ -60,6 +68,14 @@
       this.trigger("PlayerOutOfBounds", {
         x: oldX, y: oldY,
         exceededX: exceededX, exceededY: exceededY});
+    },
+
+    stopMovement: function() {
+      this._speed = 0;
+      if (this._movement) {
+        this.x -= this._movement.x;
+        this.y -= this._movement.y;
+      }
     }
   });
 }());
