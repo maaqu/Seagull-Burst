@@ -3,8 +3,10 @@
 
   function testlevel() {
     // Ground
-    Crafty.e("Obstacle")
+    Crafty.e("Obstacle, Color")
+      .color("rgb(0, 200, 0)")
       .attr({
+      
         x: 0,
         y: 500,
         h: 100,
