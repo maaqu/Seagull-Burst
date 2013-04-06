@@ -15,6 +15,9 @@
 	this.trigger("LoseHealth", 1);
 	
         })
+	.onHit("Powerup", function(powerups) {
+	powerups[0].obj.trigger("Picked");
+	})
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
         

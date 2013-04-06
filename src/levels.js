@@ -25,6 +25,8 @@
       y: 450,
       h: 50,
       w: 50});
+    // Powerup
+    Crafty.e("Powerup").attr({x: 400, origY: 300});
     setupPlayer(5, 500);
 
     var spawner = Crafty.e("Spawner").attr({x: 1000, y: 400}).setTime(10000)
