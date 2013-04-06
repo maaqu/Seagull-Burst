@@ -19,6 +19,7 @@
     setupPlayer(5, 500);
 
     Crafty.e("Enemy").at(300, 300).color("rgb(0,0,0)");
+    var gull = Crafty.e("Enemy, Delay").at(300, 300).color("rgb(0,0,0)");
   };
 
   // Levels list
