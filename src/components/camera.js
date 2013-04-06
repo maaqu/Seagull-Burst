@@ -4,11 +4,11 @@
   Crafty.c("Camera",{
     init: function() {  },
     cameraFocus: function(ent) {
-      this.set(ent);
-      var that = this;
-      ent.bind("Moved",function(location) { that.set(location); });
+      this.update(ent);
+      var self = this;
+      ent.bind("Moved",function(location) { self.update(ent); });
     },
-    set: function(ent) {
+    update: function(ent) {
       // Focus on the given 2D entity
       var vpW = Crafty.viewport.width;
       var vpH = Crafty.viewport.height;
@@ -23,7 +23,7 @@
       toX = Math.min(0, Math.max(-(level.width - vpW), toX)); // Note: viewport's interesting X coordinates
       toY = Math.max(0, Math.min(level.height - vpH, toY));
 
-      console.log("Camera focus at (" + ent.x + ", " + ent.y + "), placed camera origin at (" + toX + ", " + toY + ")");
+      //console.log("Camera focus at (" + ent.x + ", " + ent.y + "), placed camera origin at (" + toX + ", " + toY + ")");
 
       Crafty.viewport.x = toX;
       Crafty.viewport.y = toY;
