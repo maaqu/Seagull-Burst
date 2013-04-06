@@ -86,7 +86,9 @@ Crafty.scene('Level1', function() {
 
   
   //Make death condition
-  
+Crafty("Player").bind("Death", function() {
+
+});
   
 });
 
