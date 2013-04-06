@@ -10,7 +10,7 @@
         .gravityConst(0.1)
 	.onHit("Solid", function() {
           this.stopMovement();
-        });
+        })
         .onHit("Shit", function() {
 	this.trigger("LoseHealth", 1);
 	
@@ -33,8 +33,10 @@
     },
 
     _loseHealth: function(amount) {
-      this.health -= amount;
+      this.health -= amount
+      console.log("Lost Health, Current amount: " + this.health);
       if (this.health <= 0) {
+	console.log("Died.");
 	this.deathAnimation();
 	this.trigger("Death");
       }
