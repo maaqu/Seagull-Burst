@@ -9,6 +9,7 @@
         y: 500,
         h: 100,
         w: 800});
+    Crafty.e("Player").at(5, 500);
   };
 
   // Levels list
