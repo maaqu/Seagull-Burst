@@ -7,23 +7,29 @@
         .twoway(4.0, 4.0)
         .gravity('Obstacle')
         .gravityConst(0.1)
-        .onHit("Solid", function(hitdata) {
-          this.hitSolid(hitdata);
-        })
         .onHit("Shit", function() {
           this.trigger("LoseHealth", 1);
         })
 	.onHit("Powerup", function(powerups) {
-	powerups[0].obj.trigger("Picked");
+	  powerups[0].obj.trigger("Picked");
 	})
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
 
       this.health = 8;
       this.bind("Moved", function(old) {
-        if (this.hit("Obstacle")) {
-          this.x = old.x;
-          this.y = old.y;
+        var hits = this.hit("Obstacle");
+
+        if(hits) {
+          // Encountered a solid obstacle?
+          // If we're being carried, transition on top of it
+          if(this.carried)
+            this.carriedOverObstacle(hits);
+          // Undo movement
+          else {
+            this.x = old.x;
+            this.y = old.y;
+          }
         }
       });
 
@@ -81,15 +87,6 @@
 
     },
 
-    hitSolid: function(hitdata) {
-      // Encountered a solid obstacle?
-      // If we're being carried, transition on top of it
-      if(this.carried)
-        this.carriedOverObstacle(hitdata);
-      else
-        this.stopMovement();
-    },
-
     stopMovement: function() {
       this._speed = 0;
       if (this._movement) {
@@ -98,8 +95,12 @@
       }
     },
 
-    carriedOverObstacle: function() {
-      // TODO
+    carriedOverObstacle: function(entity) {
+      var newY = entity[0].obj._y - this._h;
+
+      console.log("Carry: " + this.y + " => " + newY);
+
+      this.y = newY;
     },
 
     ants: function() {
