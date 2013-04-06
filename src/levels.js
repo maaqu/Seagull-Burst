@@ -14,17 +14,26 @@
     // Ground
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 0, y: 500, h: 100, w: 1600}));
-    // Hill
+    // Powerup
+    level.addEntity(Crafty.e("Powerup").attr({x: 400, origY: 300}));
+
+    // Hills
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50}));
+    level.addEntity(Crafty.e("Obstacle, Color")
+                    .color("rgb(0, 200, 50)")
+                    .attr({ x: 600, y: 350, h: 150, w: 50}));
+
+    // Player
     level.addEntity(setupPlayer(5, 500));
 
+    // Birds
     var spawner = Crafty.e("Spawner").attr({x: 1000, y: 400}).setTime(10000)
       .bind("Spawn", function(attr) {
         console.log("spawning pigeon");
 
-        Crafty.e("Pigeon").at(attr.x, attr.y);
+        level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
     
     level.addEntity(spawner);
