@@ -24,7 +24,7 @@
       this.delay(function() {
         Crafty.e("Shit").attr({x: (this.x+this.w), y: (this.y+this.h)});
         this.shitting();
-      }, 2000);
+      }, Math.floor((Math.random()*10)+1) * 200);
     }
   });
 
