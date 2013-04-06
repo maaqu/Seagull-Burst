@@ -18,8 +18,11 @@
 
     setupPlayer(5, 500);
 
-    Crafty.e("Enemy").at(300, 300).color("rgb(0,0,0)");
-    var gull = Crafty.e("Enemy, Delay").at(300, 300).color("rgb(0,0,0)");
+    var spawner = Crafty.e("Spawner").attr({x: 1600, y: 200}).setTime(10000)
+      .bind("Spawn", function(attr) {
+        console.log("spawning gull");
+        Crafty.e("Enemy").at(attr.x, attr.y).color("black");
+    });
   };
 
   // Levels list
