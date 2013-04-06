@@ -19,19 +19,18 @@ Crafty.scene('Splashscreen', function() {
 Crafty.scene('Menu', function() {
   Crafty.background('#BFF9FF');
   var bg = Crafty.e("2D, DOM, Image, Tween")
-  .image("assets/menubg.jpg")
-  .attr({alpha: 1.0, x: 0, y: 0 });
+    .image("assets/menubg.jpg")
+    .attr({alpha: 1.0, x: 0, y: 0 });
   
   var ycoordinates = [275, 334, 397, 457];      
   var xcoordinates = [460, 268, 455, 285];      
   var selectedindex = 0;
   var selector = Crafty.e("2D, DOM, Image, Tween")
-
-  .image("assets/selector.png")
-  .attr({alpha: 0.0, x: xcoordinates[selectedindex], y: ycoordinates[selectedindex] });
+    .image("assets/selector.png")
+    .attr({alpha: 0.0, x: xcoordinates[selectedindex], y: ycoordinates[selectedindex] })
+    .tween({alpha: 1.0}, 10)
   
-  selector.tween({alpha: 1.0}, 10)
-  this.bind('KeyDown', function(e) {
+  this._onKeyDown = function(e) {
     if(e.key == Crafty.keys['ENTER']) {
       if (selectedindex == 0){Crafty.scene('Level1');}
       else if (selectedindex == 1){Crafty.scene('Level2');}      
@@ -40,19 +39,21 @@ Crafty.scene('Menu', function() {
     }
     else if(e.key == Crafty.keys['UP_ARROW']) {
       if (selectedindex > 0){    
-        selectedindex = selectedindex-1
-        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)
+        selectedindex = selectedindex - 1;
+        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10);
       }
     }
     else if(e.key == Crafty.keys['DOWN_ARROW']) {
       if (selectedindex < 3){     
-        selectedindex = selectedindex+1
-        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)                  
+        selectedindex = selectedindex + 1;
+        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10);
       }
     }
-  });
-}, function() { //ONKO TARPEELLINEN?
-  this.unbind('KeyDown', this.restart_game);
+  };
+
+  this.bind('KeyDown', this._onKeyDown);
+},function() {
+  this.unbind("KeyDown", this._onKeyDown);
 });
 
 //Loading scene (play if needs to get something)
@@ -81,10 +82,12 @@ Crafty.scene('Level1', function() {
 
   
   //Make death condition
-  Crafty("Player").bind("Death", function() {
-     Crafty.scene('Death');
-  });
-  
+  this._onDeath = function() {
+    Crafty.scene('Death');
+  };
+  Crafty("Player").bind("Death", this._onDeath);
+},function() {
+  Crafty("Player").unbind("Death", this._onDeath);
 });
 
 //Second level
@@ -96,9 +99,12 @@ Crafty.scene('Level2', function() {
 
   
   //Make death condition
-  Crafty("Player").bind("Death", function() {
-     Crafty.scene('Death');
-  });
+  this._onDeath = function() {
+    Crafty.scene('Death');
+  };
+  Crafty("Player").bind("Death", this._onDeath);
+},function() {
+  Crafty("Player").unbind("Death", this._onDeath);
 });
 
 //Death scene
@@ -115,8 +121,6 @@ Crafty.scene('Death', function() {
     this.bind('KeyDown', function(e) {
       Crafty.scene('Menu');
     });
-}, function() { //ONKO TARPEELLINEN?
-  this.unbind('KeyDown', this.restart_game);
 });
 
 //Victory scene
@@ -133,8 +137,6 @@ Crafty.scene('Victory', function() {
     this.bind('KeyDown', function(e) {
       Crafty.scene('Menu');
     });
-}, function() { //ONKO TARPEELLINEN?
-  this.unbind('KeyDown', this.restart_game);
 });
 
 //Credits scene
@@ -147,12 +149,14 @@ Crafty.scene('Credits', function() {
     .attr({alpha: 1.0, w: 800, h: 20, y:300 })
     .text('Press&nbsp;any&nbsp;key&nbsp;to&nbsp;return!')
     .css({ "text-align": "center" })
+
+  this._onKeyDown = function(e) {
+    Crafty.scene('Menu');
+  };
     
-    this.bind('KeyDown', function(e) {
-      Crafty.scene('Menu');
-    });
-}, function() { //ONKO TARPEELLINEN?
-  this.unbind('KeyDown', this.restart_game);
+  this.bind('KeyDown', this._onKeyDown);
+},function() {
+  this.unbind("KeyDown", this._onKeyDown);
 });
 
 
