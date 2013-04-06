@@ -17,7 +17,14 @@
         y: 500,
         h: 100,
         w: 1600});
-
+    // Hill
+    Crafty.e("Obstacle, Color")
+    .color("rgb(0, 200, 0)")
+    .attr({
+      x: 300,
+      y: 450,
+      h: 50,
+      w: 50});
     setupPlayer(5, 500);
 
     var spawner = Crafty.e("Spawner").attr({x: 1600, y: 200}).setTime(10000)
