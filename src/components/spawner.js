@@ -3,7 +3,7 @@
 
   Crafty.c('Spawner', {
     init: function() {
-      this.requires('Delay');
+      this.requires('2D, Delay');
       this.time = 1;
       this._spawner();
     },
