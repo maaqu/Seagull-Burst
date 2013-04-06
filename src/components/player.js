@@ -11,6 +11,10 @@
 	.onHit("Solid", function() {
           this.stopMovement();
         });
+        .onHit("Shit", function() {
+	this.trigger("LoseHealth", 1);
+	
+        });
       this.health = 8;
       this.bind("Moved", function(old) {
         if (this.hit("Obstacle")) {
