@@ -38,7 +38,6 @@ Crafty.scene('Menu', function() {
   var texts = [newgame, credits];      
   var selectedindex = 0;
   this.bind('KeyDown', function(e) {
-    console.log("sasdfa"+selectedindex);
     if(e.key == Crafty.keys['ENTER']) {
       if (selectedindex == 0){Crafty.scene('Level1');}
       else if (selectedindex == 1){Crafty.scene('Credits');}      

@@ -51,7 +51,7 @@ Crafty.scene('Menu', function() {
       }
     }
     else if(e.key == Crafty.keys['DOWN_ARROW']) {
-      if (selectedindex < texts.length){
+      if (selectedindex < texts.length-1){
         texts[selectedindex].tween({alpha: 1.0}, 20)      
         selectedindex = selectedindex+1
         texts[selectedindex].tween({alpha: 0.5}, 20)        
