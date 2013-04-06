@@ -14,7 +14,10 @@
     // Ground
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 0, y: 500, h: 100, w: 1600}));
-    // Hill
+    // Powerup
+    Crafty.e("Powerup").attr({x: 400, origY: 300});
+
+    setupPlayer(5, 500);
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50}));
