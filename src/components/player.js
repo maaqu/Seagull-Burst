@@ -10,9 +10,10 @@
         .onHit("Shit", function() {
           this.trigger("LoseHealth", 1);
         })
-	.onHit("Powerup", function(powerups) {
-	  powerups[0].obj.trigger("Picked");
-	})
+        .onHit("Powerup", function(powerups) {
+          var powerup = powerups[0].obj;
+          powerup.trigger("Picked");
+        })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
 
@@ -51,7 +52,7 @@
       this.attr({
         carried: false
       });
-      
+
       this.attr({
         w: 66,
         h: 66
@@ -114,7 +115,7 @@
 
       // TODO: Change sprite to ant-carried
 
-      
+
       // TODO: Change collision box to flat
     }
   });
