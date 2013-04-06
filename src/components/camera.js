@@ -7,6 +7,12 @@
       this.update(ent);
       var self = this;
       ent.bind("Moved",function(location) { self.update(ent); });
+
+      // Restore viewport when shutting down
+      this.bind("Remove", function() {
+        Crafty.viewport.x = 0;
+        Crafty.viewport.y = 0;
+      });
     },
     update: function(ent) {
       // Focus on the given 2D entity
