@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
 <script src="lib/crafty.js"></script>
 <script src="src/game.js"></script>
@@ -10,4 +11,19 @@ window.addEventListener('load', Game.start);
 </head>
 <body>
 </body>
+=======
+  <head>
+    <script src="lib/crafty.js"></script>
+    <script src="src/components/obstacle.js"></script>
+    <script src="src/levels.js"></script>
+    <script src="src/powerup.js"></script>
+    <script src="src/components.js"></script>
+    <script src="src/game.js"></script>
+    <script>
+      window.addEventListener('load', Game.start);
+    </script>
+  </head>
+  <body>
+  </body>
+>>>>>>> 5d6c2d206c0014f3e1f52e1ccd8320cc97f694de
 </html>

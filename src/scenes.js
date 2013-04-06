@@ -55,16 +55,10 @@ Crafty.scene("Loading", function () {
 //First level
 Crafty.scene('Level1', function() {
 
-  // Make player here
-/*  this.player = Crafty.e('PlayerCharacter').at(5, 5);
-  this.occupied[this.player.at().x][this.player.at().y] = true;*/
+  loadLevel("test");
 
 //Make victory condition
-  /*  this.show_victory = this.bind('VillageVisited', function() {
-    if (!Crafty('Village').length) {
-      Crafty.scene('Victory');
-    }
-  });*/
+
   
   //Make death condition
   

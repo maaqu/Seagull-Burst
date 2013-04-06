@@ -25,10 +25,13 @@ Crafty.scene('Menu', function() {
     .text('Menu!')
     .css({ "text-align": "center" })
 
-  this.restart_game = this.bind(13, function() {
-    Crafty.scene('Level1');
+  this.restart_game = this.bind('KeyDown', function(e) {
+    if(e.key == Crafty.keys['ENTER']) {
+      //loadLevel("test");
+      Crafty.scene('Level1');
+    }
   });
-}, function() {
+}, function() { //ONKO TARPEELLINEN?
   this.unbind('ENTER', this.restart_game);
 });
 
@@ -67,9 +70,7 @@ Crafty.scene('Level1', function() {
   //Make death condition
   
   
-}/*, function() {  //if a key was binded or something? Might be usefull
-  this.unbind('VillageVisited', this.show_victory);
-}*/);
+});
 
 //Other levels
 
@@ -84,4 +85,4 @@ Crafty.scene('Victory', function() {});
 Crafty.scene('Credits', function() {});
 
 //Hiscore scene
-Crafty.scene('Hiscore', function() {});
+Crafty.scene('Hiscore', function() {})
