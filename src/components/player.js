@@ -23,10 +23,10 @@
       });
       
       this.bind("NewDirection", function(data) {       
-        if (this.x-old.x > 0) {
-          this.animate('PlayerMovingRight', 4, 1);
-        } else if (this.x-old.x < 0) {
-          this.animate('PlayerMovingLeft', 4, 1);
+        if (data.x > 0) {
+          this.animate('PlayerMovingRight', 4, -1);
+        } else if (data.x < 0) {
+          this.animate('PlayerMovingLeft', 4, -1);
         } else {
           this.stop();
         }
