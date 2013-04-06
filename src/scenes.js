@@ -35,23 +35,19 @@ Crafty.scene('Menu', function() {
     if(e.key == Crafty.keys['ENTER']) {
       if (selectedindex == 0){Crafty.scene('Level1');}
       else if (selectedindex == 1){Crafty.scene('Level2');}      
-      else if (selectedindex == 2){Crafty.scene('Hiscore');}                  
+      else if (selectedindex == 2){window.open('http://serveri.tulilaulu.net/hiscores.html','','width=200,height=600')}                  
       else if (selectedindex == 3){Crafty.scene('Credits');}      
     }
     else if(e.key == Crafty.keys['UP_ARROW']) {
-      if (selectedindex > 0){
-//        selector.tween({alpha: 0.5}, 5)      
+      if (selectedindex > 0){    
         selectedindex = selectedindex-1
         selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)
-//        selector.tween({alpha: 1.0}, 5)              
       }
     }
     else if(e.key == Crafty.keys['DOWN_ARROW']) {
-      if (selectedindex < 3){
-//        selector.tween({alpha: 0.5}, 5)      
+      if (selectedindex < 3){     
         selectedindex = selectedindex+1
-        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)
-//        selector.tween({alpha: 1.0}, 5)                    
+        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)                  
       }
     }
   });
@@ -62,7 +58,6 @@ Crafty.scene('Menu', function() {
 //Loading scene (play if needs to get something)
 //the loading screen that will display while our assets load
 Crafty.scene("Loading", function () {
-
 //ESIMERKKEJA
     //load takes an array of assets and a callback when complete
 /*    Crafty.load(["sprite.png"], function () {
@@ -86,17 +81,31 @@ Crafty.scene('Level1', function() {
 
   
   //Make death condition
-Crafty("Player").bind("Death", function() {
-
-});
+  Crafty("Player").bind("Death", function() {
+     Crafty.scene('Death');
+  });
   
 });
 
-//Other levels
+//Second level
+Crafty.scene('Level2', function() {
 
+  loadLevel("test"); //TODO: CHANGE
+
+//Make victory condition
+
+  
+  //Make death condition
+  Crafty("Player").bind("Death", function() {
+     Crafty.scene('Death');
+  });
+});
 
 //Death scene
-Crafty.scene('Death', function() {});
+Crafty.scene('Death', function() {
+
+
+});
 
 //Victory scene
 Crafty.scene('Victory', function() {});
@@ -107,7 +116,16 @@ Crafty.scene('Credits', function() {
     .attr({alpha: 1.0, w: 800, h: 20, y:200 })
     .text('CREDITS!')
     .css({ "text-align": "center" })
+  Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:300 })
+    .text('Press&nbsp;any&nbsp;key&nbsp;to&nbsp;return!')
+    .css({ "text-align": "center" })
+    
+    this.bind('KeyDown', function(e) {
+      Crafty.scene('Menu');
+    });
+}, function() { //ONKO TARPEELLINEN?
+  this.unbind('KeyDown', this.restart_game);
 });
 
-//Hiscore scene
-Crafty.scene('Hiscore', function() {})
+
