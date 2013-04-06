@@ -1,6 +1,11 @@
 (function() {
   "use strict";
 
+  function setupPlayer(startX, startY) {
+    var player = Crafty.e("Player").at(startX, startY);
+    Crafty.e("Camera").camera(player);
+  }
+
   function testlevel() {
     // Ground
     Crafty.e("Obstacle, Color")
@@ -10,8 +15,9 @@
         x: 0,
         y: 500,
         h: 100,
-        w: 800});
-    Crafty.e("Player").at(5, 500);
+        w: 1600});
+
+    setupPlayer(5, 500);
   };
 
   // Levels list
