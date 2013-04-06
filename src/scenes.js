@@ -88,6 +88,7 @@ Crafty.scene('Level1', function() {
   Crafty("Player").bind("Death", this._onDeath);
 },function() {
   Crafty("Player").unbind("Death", this._onDeath);
+  Crafty("Level, Camera").destroy();
 });
 
 //Second level
@@ -105,6 +106,7 @@ Crafty.scene('Level2', function() {
   Crafty("Player").bind("Death", this._onDeath);
 },function() {
   Crafty("Player").unbind("Death", this._onDeath);
+  Crafty("Level, Camera").destroy();
 });
 
 //Death scene
@@ -112,15 +114,19 @@ Crafty.scene('Death', function() {
   Crafty.e('2D, DOM, Text, Tween')
     .attr({alpha: 1.0, w: 800, h: 20, y:200 })
     .text('YOU&nbsp;KILLED&nbsp;IT!')
-    .css({ "text-align": "center" })
+    .css({ "text-align": "center" });
   Crafty.e('2D, DOM, Text, Tween')
     .attr({alpha: 1.0, w: 800, h: 20, y:300 })
     .text('Press&nbsp;any&nbsp;key&nbsp;to&nbsp;go‚nbsp;to‚nbsp;the&nbsp;menu!')
-    .css({ "text-align": "center" })
-    
-    this.bind('KeyDown', function(e) {
-      Crafty.scene('Menu');
-    });
+    .css({ "text-align": "center" });
+  
+  this._onKeyDown = function(e) {
+    Crafty.scene('Menu');
+  };
+             
+  this.bind('KeyDown', this._onKeyDown);
+},function() {
+  this.unbind("KeyDown", this._onKeyDown);
 });
 
 //Victory scene
