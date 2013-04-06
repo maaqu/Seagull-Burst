@@ -3,14 +3,16 @@
 
   Crafty.c('Player', {
     init: function() {
-      this.requires('Actor, Twoway, Color, Gravity, Collision')
+      this.requires('Actor, Twoway, Gravity, Collision, SpriteAnimation, spr_player')
         .twoway(4.0, 2.0)
-        .color('rgb(184, 143, 143)')
         .gravity('Obstacle')
         .gravityConst(0.1)
-	.onHit("Solid", function() {
+        .onHit("Solid", function() {
           this.stopMovement();
-        });
+        })
+        .animate('PlayerMovingRight', 0, 0, 7)
+        .animate('PlayerMovingLeft', 0, 9, 7);
+        
       this.health = 8;
       this.bind("Moved", function(old) {
         if (this.hit("Obstacle")) {
@@ -18,9 +20,20 @@
           this.y = old.y;
         }
       });
+      
+      this.bind("NewDirection", function(data) {       
+        if (this.x-old.x > 0) {
+          this.animate('PlayerMovingRight', 4, 1);
+        } else if (this.x-old.x < 0) {
+          this.animate('PlayerMovingLeft', 4, 1);
+        } else {
+          this.stop();
+        }
+      });
+      
       this.attr({
-        w: 30,
-        h: 30
+        w: 66,
+        h: 66
       });
       
       this.bind("EnterFrame", this._playerFrame);
