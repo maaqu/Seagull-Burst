@@ -103,12 +103,39 @@ Crafty.scene('Level2', function() {
 
 //Death scene
 Crafty.scene('Death', function() {
-
-
+  Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:200 })
+    .text('YOU&nbsp;KILLED&nbsp;IT!')
+    .css({ "text-align": "center" })
+  Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:300 })
+    .text('Press&nbsp;any&nbsp;key&nbsp;to&nbsp;go‚nbsp;to‚nbsp;the&nbsp;menu!')
+    .css({ "text-align": "center" })
+    
+    this.bind('KeyDown', function(e) {
+      Crafty.scene('Menu');
+    });
+}, function() { //ONKO TARPEELLINEN?
+  this.unbind('KeyDown', this.restart_game);
 });
 
 //Victory scene
-Crafty.scene('Victory', function() {});
+Crafty.scene('Victory', function() {
+  Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:200 })
+    .text('HIHHIHHII,nbsp;kutittaaa!&nbsp;Voitit&nbsp;pelin!')
+    .css({ "text-align": "center" })
+  Crafty.e('2D, DOM, Text, Tween')
+    .attr({alpha: 1.0, w: 800, h: 20, y:300 })
+    .text('Press&nbsp;any&nbsp;key&nbsp;to&nbsp;return!')
+    .css({ "text-align": "center" })
+    
+    this.bind('KeyDown', function(e) {
+      Crafty.scene('Menu');
+    });
+}, function() { //ONKO TARPEELLINEN?
+  this.unbind('KeyDown', this.restart_game);
+});
 
 //Credits scene
 Crafty.scene('Credits', function() {
