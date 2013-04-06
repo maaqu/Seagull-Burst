@@ -14,7 +14,7 @@
         .onHit("Shit", function() {
 	this.trigger("LoseHealth", 1);
 	
-        });
+        })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
 
@@ -50,14 +50,9 @@
       this.health -= amount
       console.log("Lost Health, Current amount: " + this.health);
       if (this.health <= 0) {
-<<<<<<< HEAD
 	console.log("Died.");
-	this.deathAnimation();
-	this.trigger("Death");
-=======
         this.deathAnimation();
         this.trigger("Death");
->>>>>>> 792092b567b84acf455cdfb59c7a47f51119e8c8
       }
     },
     deathAnimation: function() {
