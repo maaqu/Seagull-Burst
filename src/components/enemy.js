@@ -22,7 +22,6 @@
     },
     shitting: function() {
       this.delay(function() {
-        console.log("oooh shiiit")
         Crafty.e("Shit").attr({x: (this.x+this.w), y: (this.y+this.h)});
         this.shitting();
       }, 2000);
@@ -41,7 +40,6 @@
       });
     },
     splats: function() {
-      console.log("splats");
       this.destroy();
     }
   });

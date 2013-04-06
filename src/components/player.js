@@ -5,7 +5,7 @@
     init: function() {
       this.requires('Actor, Twoway, Gravity, Collision, SpriteAnimation, spr_player, LevelBounded')
 
-        .twoway(4.0, 2.0)
+        .twoway(4.0, 4.0)
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Solid", function() {
@@ -13,7 +13,7 @@
         })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
-        
+
       this.health = 8;
       this.bind("Moved", function(old) {
         if (this.hit("Obstacle")) {
@@ -21,22 +21,22 @@
           this.y = old.y;
         }
       });
-      
-      this.bind("NewDirection", function(data) {       
-        if (this.x-old.x > 0) {
-          this.animate('PlayerMovingRight', 4, 1);
-        } else if (this.x-old.x < 0) {
-          this.animate('PlayerMovingLeft', 4, 1);
+
+      this.bind("NewDirection", function(data) {
+        if (data.x > 0) {
+          this.animate('PlayerMovingRight', 4, -1);
+        } else if (data.x < 0) {
+          this.animate('PlayerMovingLeft', 4, -1);
         } else {
           this.stop();
         }
       });
-      
+
       this.attr({
         w: 66,
         h: 66
       });
-      
+
       this.bind("EnterFrame", this._playerFrame);
 
       this.bind("LoseHealth", this._loseHealth);
@@ -45,8 +45,8 @@
     _loseHealth: function(amount) {
       this.health -= amount;
       if (this.health <= 0) {
-	this.deathAnimation();
-	this.trigger("Death");
+        this.deathAnimation();
+        this.trigger("Death");
       }
     },
     deathAnimation: function() {
