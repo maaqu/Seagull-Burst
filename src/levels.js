@@ -9,7 +9,7 @@
   function testlevel() {
     Crafty.e("Level")
       .bounds(700, 1000);
-    
+
     // Ground
     Crafty.e("Ground")
       .attr({
@@ -29,8 +29,8 @@
 
     var spawner = Crafty.e("Spawner").attr({x: 1600, y: 200}).setTime(10000)
       .bind("Spawn", function(attr) {
-        console.log("spawning gull");
-        Crafty.e("Enemy").at(attr.x, attr.y).color("black");
+        console.log("spawning pigeon");
+        Crafty.e("Pigeon").at(attr.x, attr.y).color("black");
     });
   };
 
