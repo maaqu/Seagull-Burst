@@ -4,7 +4,11 @@
   // Generic powerup
   Crafty.c('Enemy', {
     init: function() {
-      this.requires("2D, Canvas, Color");
+      this.requires('Actor, Color');
+      this.attr({
+        w: 30,
+        h: 30
+      })
     }
   });
 }());
