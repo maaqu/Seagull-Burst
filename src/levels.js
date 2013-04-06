@@ -30,7 +30,7 @@
     var spawner = Crafty.e("Spawner").attr({x: 1000, y: 400}).setTime(10000)
       .bind("Spawn", function(attr) {
         console.log("spawning pigeon");
-        Crafty.e("Pigeon").at(attr.x, attr.y).color("black");
+        Crafty.e("Pigeon").at(attr.x, attr.y);
     });
   };
 

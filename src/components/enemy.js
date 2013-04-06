@@ -4,8 +4,7 @@
   // Generic enemy
   Crafty.c('Enemy', {
     init: function() {
-      this.requires('Actor, Color')
-      .attr({ w: 30, h: 30 })
+      this.requires('Actor')
       .bind("EnterFrame", function() {
         this.x -= 1;
         if(this.x < -this.w) {
@@ -17,7 +16,15 @@
 
   Crafty.c('Pigeon', {
     init: function() {
-      this.requires('Enemy, Delay');
+      this.requires('Enemy, Delay, SpriteAnimation, spr_pigeon')
+      .animate('PigeonMovingLeft', 0, 2, 3);
+
+      this.attr({
+        w: 88,
+        h: 44
+      });
+      
+      this.animate('PigeonMovingLeft', 4, -1);
       this.shitting();
     },
     shitting: function() {
