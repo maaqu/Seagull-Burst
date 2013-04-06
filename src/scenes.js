@@ -1,16 +1,14 @@
 //Splashscreen to show game and team names
 Crafty.scene('Splashscreen', function() {
-  text2 = Crafty.e('2D, DOM, Text, Tween')
-    .attr({alpha: 1.0, w: 800, h: 20, y:200 })
-    .text('Seagull&nbsp;Burst&nbsp;presents')
-    .css({ "text-align": "center" })
-  text1 = Crafty.e('2D, DOM, Text, Tween')
-    .attr({alpha: 1.0, w: 800, h: 20, y:300 })
-    .text('Pelin&nbsp;nimi!!!!')
-    .css({ "text-align": "center" })
+  var seagull = Crafty.e("2D, DOM, Image, Tween")
+    .image("assets/seagull.png")
+    .attr({alpha: 1.0, x: 190, y: 50 });
+  var logo = Crafty.e('2D, DOM, Image, Tween')
+    .image("assets/logo.png")
+    .attr({alpha: 1.0, x: 57, y: 250 });
   setTimeout(function(){ //fade out after 3000 ms
-    text1.tween({alpha: 0.0}, 50);
-    text2.tween({alpha: 0.0}, 50);
+    seagull.tween({alpha: 0.0}, 50);
+    logo.tween({alpha: 0.0}, 50);
     setTimeout(function(){
       Crafty.scene('Menu');      
     },1500);
@@ -19,41 +17,41 @@ Crafty.scene('Splashscreen', function() {
 
 //Main game menu
 Crafty.scene('Menu', function() {
-  Crafty.e('2D, DOM, Text, Tween')
-    .attr({alpha: 0.0, y: 200, w: 800 })
-    .tween({alpha: 1.0}, 30)
-    .text('Menu!')
-    .css({ "text-align": "center" })
-  var newgame = Crafty.e('2D, DOM, Text, Tween')
-    .attr({alpha: 0.0, y: 300, w: 800 })
-    .tween({alpha: 1.0}, 30)
-    .text('New game')
-    .css({ "text-align": "center" })
-  var credits = Crafty.e('2D, DOM, Text, Tween')
-    .attr({alpha: 0.0, y: 350, w: 800 })
-    .tween({alpha: 1.0}, 30)
-    .text('Credits')
-    .css({ "text-align": "center" }) 
-  newgame.tween({alpha: 0.5}, 30)
-  var texts = [newgame, credits];      
+  Crafty.background('#BFF9FF');
+  var bg = Crafty.e("2D, DOM, Image, Tween")
+  .image("assets/menubg.jpg")
+  .attr({alpha: 1.0, x: 0, y: 0 });
+  
+  var ycoordinates = [275, 334, 397, 457];      
+  var xcoordinates = [460, 268, 455, 285];      
   var selectedindex = 0;
+  var selector = Crafty.e("2D, DOM, Image, Tween")
+
+  .image("assets/selector.png")
+  .attr({alpha: 0.0, x: xcoordinates[selectedindex], y: ycoordinates[selectedindex] });
+  
+  selector.tween({alpha: 1.0}, 10)
   this.bind('KeyDown', function(e) {
     if(e.key == Crafty.keys['ENTER']) {
       if (selectedindex == 0){Crafty.scene('Level1');}
-      else if (selectedindex == 1){Crafty.scene('Credits');}      
+      else if (selectedindex == 1){Crafty.scene('Level2');}      
+      else if (selectedindex == 2){Crafty.scene('Hiscore');}                  
+      else if (selectedindex == 3){Crafty.scene('Credits');}      
     }
     else if(e.key == Crafty.keys['UP_ARROW']) {
       if (selectedindex > 0){
-        texts[selectedindex].tween({alpha: 1.0}, 20)
+//        selector.tween({alpha: 0.5}, 5)      
         selectedindex = selectedindex-1
-        texts[selectedindex].tween({alpha: 0.5}, 20)        
+        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)
+//        selector.tween({alpha: 1.0}, 5)              
       }
     }
     else if(e.key == Crafty.keys['DOWN_ARROW']) {
-      if (selectedindex < texts.length-1){
-        texts[selectedindex].tween({alpha: 1.0}, 20)      
+      if (selectedindex < 3){
+//        selector.tween({alpha: 0.5}, 5)      
         selectedindex = selectedindex+1
-        texts[selectedindex].tween({alpha: 0.5}, 20)        
+        selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10)
+//        selector.tween({alpha: 1.0}, 5)                    
       }
     }
   });
