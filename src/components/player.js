@@ -5,12 +5,14 @@
     init: function() {
       this.requires('Actor, Collision, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player')
         .twoway(4.0, 4.0)
+        .attr({powerups: 0})
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Shit", function() {
           this.trigger("LoseHealth", 1);
         })
         .onHit("Powerup", function(powerups) {
+          this.powerups += 1;
           var powerup = powerups[0].obj;
           powerup.trigger("Picked");
         })
@@ -47,6 +49,9 @@
       this.bind("KeyDown", function() {
         if(this.isDown("Z")) {
           this.ants();
+        }
+        if(this.isDown("X")) {
+          this.baking();
         }
       });
       this.attr({
@@ -117,6 +122,10 @@
 
 
       // TODO: Change collision box to flat
+    },
+
+    baking: function() {
+      console.log("BAKING POWER: "+ this.powerups);
     }
   });
 }());
