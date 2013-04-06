@@ -5,5 +5,6 @@ start: function() {
 Crafty.init(800, 600);
 Crafty.background('#BFF9FF');
 Crafty.e('Player').at(50, 500);
+Crafty.e('Block').at(50, 550);
 }
 }
