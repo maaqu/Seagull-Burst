@@ -4,11 +4,11 @@
   Crafty.c("Camera",{
     init: function() {  },
     cameraFocus: function(ent) {
-      this.set(ent);
-      var that = this;
-      ent.bind("Moved",function(location) { that.set(location); });
+      this.update(ent);
+      var self = this;
+      ent.bind("Moved",function(location) { self.update(ent); });
     },
-    set: function(ent) {
+    update: function(ent) {
       // Focus on the given 2D entity
       var vpW = Crafty.viewport.width;
       var vpH = Crafty.viewport.height;
