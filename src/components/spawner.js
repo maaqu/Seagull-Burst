@@ -3,7 +3,7 @@
 
   Crafty.c('Spawner', {
     init: function() {
-      this.requires('Delay');
+      this.requires('2D, Delay');
       this.time = 1;
       this._spawner();
     },
@@ -13,7 +13,8 @@
     },
     _spawner: function() {
       this.delay(function() {
-        this.trigger("Spawn", {x: this.x, y: this.y});
+        var y = this.y - Math.floor((Math.random()*10)+1)*50;
+        this.trigger("Spawn", {x: this.x, y: y});
         this._spawner();
       }, this.time);
     }

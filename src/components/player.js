@@ -4,12 +4,14 @@
   Crafty.c('Player', {
     init: function() {
       this.requires('Actor, Twoway, Gravity, Collision, SpriteAnimation, spr_player, LevelBounded')
-
         .twoway(4.0, 4.0)
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Solid", function() {
           this.stopMovement();
+        })
+        .onHit("Shit", function() {
+          this.trigger("LoseHealth", 1);
         })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
@@ -44,7 +46,13 @@
 
     _loseHealth: function(amount) {
       this.health -= amount;
+      this.animate('PlayerMovingRight', 0, 8-this.health, 7);
+      this.animate('PlayerMovingLeft', 0, 17-this.health, 7);
+      this.animate('PlayerMovingRight', 0, 0);
+      this.animate('PlayerMovingLeft', 0, 0);
+
       if (this.health <= 0) {
+        console.log("Died.");
         this.deathAnimation();
         this.trigger("Death");
       }
