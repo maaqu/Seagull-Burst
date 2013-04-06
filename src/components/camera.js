@@ -23,7 +23,7 @@
       toX = Math.min(0, Math.max(-(level.width - vpW), toX)); // Note: viewport's interesting X coordinates
       toY = Math.max(0, Math.min(level.height - vpH, toY));
 
-      console.log("Camera focus at (" + ent.x + ", " + ent.y + "), placed camera origin at (" + toX + ", " + toY + ")");
+      //console.log("Camera focus at (" + ent.x + ", " + ent.y + "), placed camera origin at (" + toX + ", " + toY + ")");
 
       Crafty.viewport.x = toX;
       Crafty.viewport.y = toY;
