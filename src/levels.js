@@ -23,10 +23,10 @@
     level.addEntity(Crafty.e("Apple").attr({x: 500, origY: 300}));
 
     // Hills
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color, WiredHitBox")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50}));
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color")
                     .color("rgb(0, 200, 50)")
                     .attr({ x: 600, y: 350, h: 150, w: 50}));
 
@@ -70,34 +70,40 @@
     level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
     
     // Hills
-    level.addEntity(Crafty.e("Obstacle, Color, WiredHitBox")
+    level.addEntity(Crafty.e("RectObstacle, Color")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50})
-                    .collision(new Crafty.polygon([0,0], [50,50], [0,50])));
+                    .rectobstacle());
 
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color")
                     .color("rgb(0, 200, 50)")
-                    .attr({ x: 800, y: 350, h: 150, w: 50}));
+                    .attr({ x: 800, y: 350, h: 150, w: 50})
+                    .rectobstacle());
   
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color")
                     .color("rgb(0, 200, 0)")
-                    .attr({ x: 980, y: 450, h: 50, w: 50}));
+                    .attr({ x: 980, y: 450, h: 50, w: 50})
+                    .rectobstacle());
   
-    level.addEntity(Crafty.e("Obstacle, Color")
-                .color("rgb(0, 200, 0)")
-                .attr({ x: 1100, y: 380, h: 20, w: 200}));
+    level.addEntity(Crafty.e("RectObstacle, Color")
+                    .color("rgb(0, 200, 0)")
+                    .attr({ x: 1100, y: 380, h: 20, w: 200})
+                    .rectobstacle());
     
-    level.addEntity(Crafty.e("Obstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1400, y: 380, h: 20, w: 100}));
+    level.addEntity(Crafty.e("RectObstacle, Color")
+                    .color("rgb(0, 200, 0)")
+                    .attr({ x: 1400, y: 380, h: 20, w: 100})
+                    .rectobstacle());
 
-    level.addEntity(Crafty.e("Obstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1600, y: 320, h: 180, w: 50}));
+    level.addEntity(Crafty.e("RectObstacle, Color")
+                    .color("rgb(0, 200, 0)")
+                    .attr({ x: 1600, y: 320, h: 180, w: 50})
+                    .rectobstacle());
     
-    level.addEntity(Crafty.e("Obstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1650, y: 420, h: 80, w: 50}));
+    level.addEntity(Crafty.e("RectObstacle, Color")
+                    .color("rgb(0, 200, 0)")
+                    .attr({ x: 1650, y: 420, h: 80, w: 50})
+                    .rectobstacle());
     
     level.addEntity(Crafty.e("Obstacle, Color")
             .color("rgb(0, 200, 0)")
