@@ -146,6 +146,7 @@
             console.log("Baking over");
             this._powerups -= 2;
             this.trigger("GainHealth");
+            this._baking = false;
           }
         }, 2000);
       }
