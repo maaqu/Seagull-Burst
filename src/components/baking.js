@@ -3,8 +3,8 @@
 
   Crafty.c("Baking",{
     init: function() {
-      this.requires('2D, Canvas, Text')
-        .text("BAKING");
+      this.requires('2D, DOM, Text')
+        .text("BAKING").textColor("black");
     }
   });
 }());

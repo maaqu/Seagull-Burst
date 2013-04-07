@@ -63,6 +63,8 @@
                     .attr({ x: 0, y: 500, h: 100, w: 1700}));
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 2400, y: 500, h: 100, w: 250}));
+    level.addEntity(Crafty.e("Ground")
+                    .attr({ x: 4500, y: 500, h: 100, w: 350}));
 
     // Powerups
     level.addEntity(Crafty.e("Apple").attr({x: 170, origY: 400}));    
@@ -88,9 +90,13 @@
     mkHill(1650, 420, 80, 50);
     mkHill(1800, 330, 80, 100);
     mkHill(2000, 270, 230, 50);
+    mkHill(2800, 420, 100, 50);
+    mkHill(3100, 340, 100, 50);
+    mkHill(3600, 500, 100, 50);
+    mkHill(3900, 150, 500, 50);
 
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
-                    .attr({ x: 2500, y: 212}));
+                    .attr({ x: 4752, y: 212}));
 
     // Player
     level.addEntity(setupPlayer(5, 500));
