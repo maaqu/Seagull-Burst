@@ -31,6 +31,10 @@
         .animate('PlayerWalkingLeft', 0, 19, 1);
 
       this.bind("Moved", function(old) {
+        // Suppress spurious movement events
+        if(old.x == this.x && old.y == this.y)
+          return;
+
         console.log("Player moved: (" + old.x + "," + old.y + ") => (" + this._x + "," + this._y + ")");
 
         var hits = this.hit("Obstacle");
