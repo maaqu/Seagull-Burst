@@ -111,6 +111,10 @@
     loadLevel("berrypie");
 
     //Make victory condition
+   this._onVictory = function (points) {
+      alert(points);
+      Crafty.scene('Victory');
+    };
 
 
     //Make death condition
