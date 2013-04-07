@@ -88,7 +88,8 @@
       if(evt.exceededY)
         Crafty.scene("Death");
     }
-    this._onVictory = function () {
+    this._onVictory = function (points) {
+      console.log(points);
       Crafty.scene('Victory');
     };
 
@@ -110,6 +111,10 @@
     loadLevel("berrypie");
 
     //Make victory condition
+   this._onVictory = function (points) {
+      alert(points);
+      Crafty.scene('Victory');
+    };
 
 
     //Make death condition

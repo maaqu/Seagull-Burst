@@ -29,7 +29,7 @@
           powerup.trigger("Picked");
         })
         .onHit("spr_cafe", function() {
-          this.trigger("Victory");
+          this.trigger("Victory", this._points);
         })
         .animate('PlayerRollingRight', 0, 0, 7)
         .animate('PlayerRollingLeft', 0, 9, 7)
