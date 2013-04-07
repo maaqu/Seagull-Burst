@@ -89,7 +89,10 @@
         Crafty.scene("Death");
     }
     this._onVictory = function (points) {
-      console.log(points);
+      var name = prompt("Enter your name:");
+      if (!!name) {
+        Hiscore.saveScore("level1", name, points);
+      }
       Crafty.scene('Victory');
     };
 
@@ -112,7 +115,10 @@
 
     //Make victory condition
    this._onVictory = function (points) {
-      alert(points);
+      var name = prompt("Enter your name:");
+      if (!!name) {
+        Hiscore.saveScore("level2", name, points);
+      }
       Crafty.scene('Victory');
     };
 
