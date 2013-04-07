@@ -1,12 +1,15 @@
 (function() {
   "use strict";
 
+  var DEFAULT_SPEED = 1;
+
   // Generic enemy
   Crafty.c('Enemy', {
     init: function() {
       this.requires('Actor')
+        .attr({speed: DEFAULT_SPEED})
         .bind("EnterFrame", function() {
-          this.x -= 1;
+          this.x -= this.speed;
           if(this.x < -this.w) {
             this.destroy();
           }
@@ -67,12 +70,28 @@
   Crafty.c('Gull', {
     init: function() {
       this.requires('Enemy, Bird, Delay, SpriteAnimation, spr_seagull')
-        .animate('SeagullMovingLeft', 0, 0, 3);
-
-      this.attr({
-        w: 88,
-        h: 44
-      });
+        .animate('SeagullMovingLeft', 0, 0, 3)
+        .attr({
+          w: 88,
+          h: 44,
+          deltaY: 0,
+          delta: 1,
+          speed: 3,
+          limit: 300
+        })
+        .bind("EnterFrame", function() {
+          if (this.origY === undefined) {
+            this.origY = this.y;
+          }
+          if (this.deltaY > this.limit && this.delta == 1) {
+            this.delta = -1;
+          } else if (this.deltaY <= 1 && this.delta == -1) {
+            this.limit = Crafty.math.randomInt(200, 400);
+            this.delta = 1;
+          }
+          this.deltaY += this.delta * this.speed;
+          this.y = this.origY + this.deltaY;
+        });
 
       this.animate('SeagullMovingLeft', 4, -1);
     }
