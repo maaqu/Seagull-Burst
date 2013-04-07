@@ -35,7 +35,7 @@
 
   Crafty.c("Foot", {
     init: function() {
-      this.requires("Leg, spr_monty, WiredHitBox")
+      this.requires("Leg, spr_monty")
         .collision(new Crafty.polygon([25, 390], [280, 340], [266, 100], [410, 100], [400, 350], [415, 470], [75, 470]));
     }
   });
