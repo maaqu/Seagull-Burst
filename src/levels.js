@@ -148,10 +148,10 @@
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 4500, y: 500, h: 100, w: 350}));
     // Powerups
-    level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
+    level.addEntity(Crafty.e("Berry").attr({x: 700, origY: 415}));
     level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
     level.addEntity(Crafty.e("Butter").attr({x: 1655, origY: 345}));
-    level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
+    level.addEntity(Crafty.e("Strawberry").attr({x: 1850, origY: 250}));
 
     // Hills
     function mkHill(x, y, h, w) {
