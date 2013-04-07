@@ -140,9 +140,12 @@ Crafty.scene('Death', function() {
 Crafty.scene('Victory', function() {
   Crafty.e('2D, Canvas, Image').image("assets/victory.jpg");
 
-  this.bind('KeyDown', function(e) {
+  this._onKeyDown = function(e) {
     Crafty.scene('Menu');
-  });
+  };
+  this.bind('KeyDown', this._onKeyDown);
+}, function() {
+  this.unbind('KeyDown', this._onKeyDown);                         
 });
 
 //Credits scene
