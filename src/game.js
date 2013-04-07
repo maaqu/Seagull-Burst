@@ -7,7 +7,8 @@
         "assets/pie_sprite.png",
         "assets/bird_sprite.png",
         "assets/powerup_sprite.png",
-	"assets/Monty_foot_sprite.png"
+	"assets/Monty_foot_sprite.png",
+        "assets/ground-texture.jpg",
       ],
       function() {
 
