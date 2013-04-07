@@ -6,7 +6,7 @@
 
   Crafty.c('Player', {
     init: function() {
-      this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision, WiredHitBox')
+      this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision')
         .twoway(4.0, 4.0)
         .attr({_powerups: 0, _health: FULL_HP, _baking: false, _canTakeDamage: true})
         .pieShape()
