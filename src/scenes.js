@@ -172,13 +172,13 @@
 
     Hiscore.loadScores("level1", function (data){
        for (var i = 0; i < data.length; i++){
-        Crafty.e("2D, DOM, Text").attr({ x: 200, y: 260+i*30 }).text(data[i].name+": "+data[i].score)
+        Crafty.e("2D, DOM, Text").attr({ x: 200, y: 260+i*50 }).text(data[i].name+": "+data[i].score)
       .textColor('#000000');
       }
     })
     Hiscore.loadScores("level2", function (data){
       for (var i = 0; i < data.length; i++){
-        Crafty.e("2D, DOM, Text").attr({ x: 500, y: 260+i*30 }).text(data[i].name+": "+data[i].score)
+        Crafty.e("2D, DOM, Text").attr({ x: 500, y: 260+i*50 }).text(data[i].name+": "+data[i].score)
       .textColor('#000000');
       }
     })

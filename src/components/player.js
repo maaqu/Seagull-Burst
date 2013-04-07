@@ -113,6 +113,8 @@
 
       this._refreshAnimation();
 
+      this._score -= Math.floor(10 * Math.random());
+      
       if (this._health <= 0) {
         console.log("Died.");
         this.deathAnimation();
