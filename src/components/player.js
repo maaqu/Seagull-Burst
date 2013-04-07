@@ -8,7 +8,7 @@
     init: function() {
       this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision')
         .twoway(4.0, 4.0)
-        .attr({_powerups: 0, _health: FULL_HP, _baking: false, _canTakeDamage: true})
+        .attr({_powerups: 0, _points: 0, _health: FULL_HP, _baking: false, _canTakeDamage: true})
         .pieShape()
         .gravity('Obstacle')
         .gravityConst(0.1)
@@ -23,6 +23,8 @@
         })
         .onHit("Powerup", function(powerups) {
           this._powerups += 1;
+          this._points += 500;
+	  console.log(this._points);
           var powerup = powerups[0].obj;
           powerup.trigger("Picked");
         })
