@@ -88,7 +88,8 @@
       if(evt.exceededY)
         Crafty.scene("Death");
     }
-    this._onVictory = function () {
+    this._onVictory = function (points) {
+      console.log(points);
       Crafty.scene('Victory');
     };
 
