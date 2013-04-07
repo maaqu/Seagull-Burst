@@ -29,6 +29,7 @@
           powerup.trigger("Picked");
         })
         .onHit("spr_cafe", function() {
+          // Final points, lose number of frames
           this.trigger("Victory", this._points);
         })
         .animate('PlayerRollingRight', 0, 0, 7)
@@ -113,7 +114,7 @@
 
       this._refreshAnimation();
 
-      this._score -= Math.floor(10 * Math.random());
+      this._score -= 50;
       
       if (this._health <= 0) {
         console.log("Died.");

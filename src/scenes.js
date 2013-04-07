@@ -80,6 +80,7 @@
   Crafty.scene('Level1', function() {
 
     loadLevel("tutorial");
+    var startFrame = Crafty.frame();
 
     this._onDeath = function() {
       Crafty.scene('Death');
@@ -89,6 +90,11 @@
         Crafty.scene("Death");
     }
     this._onVictory = function (points) {
+      var endFrame = Crafty.frame();
+      console.log("Frames spent: " + (endFrame - startFrame));
+
+      points -= (endFrame - startFrame);
+
       var name = prompt("Enter your name:");
       if (!!name) {
         Hiscore.saveScore("level1", name, points);
