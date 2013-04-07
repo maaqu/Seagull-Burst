@@ -65,8 +65,8 @@
                     .attr({ x: 4000, y: 500, h: 100, w: 1000}));
     
     // Powerups
-    level.addEntity(Crafty.e("Apple").attr({x: 800, origY: 500}));
-    level.addEntity(Crafty.e("Flour").attr({x: 1300, origY: 430}));
+    level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
+    level.addEntity(Crafty.e("Flour").attr({x: 1250, origY: 325}));
     
     // Hills
     level.addEntity(Crafty.e("Obstacle, Color")

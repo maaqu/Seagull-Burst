@@ -8,6 +8,11 @@
         "assets/bird_sprite.png",
         "assets/powerup_sprite.png",
         "assets/ground-texture.jpg",
+        "assets/tausta1.jpg",
+        "assets/tausta2.jpg",
+        "assets/credits.jpg",
+        "assets/death.jpg",
+        "assets/victory.jpg",
       ],
       function() {
 
