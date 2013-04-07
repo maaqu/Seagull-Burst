@@ -9,6 +9,7 @@
       .bind("EnterFrame", function() {
 	  if (this.deltaY > 39 && this.delta == 1)
 		this.delta = -1;
+
 	  else if (this.deltaY <= 1 && this.delta == -1)
 		this.delta = 1;
 	  this.deltaY += this.delta;
