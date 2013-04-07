@@ -168,12 +168,12 @@
     mkHill(980, 450, 40, 40);
     mkHill(1100, 380, 20, 200);
     mkHill(1400, 380, 20, 100);
-    mkHill(1470, 420, 80, 50);
+    mkHill(1500, 420, 80, 50);
     mkHill(1650, 420, 80, 50);
     mkHill(1800, 330, 80, 100);
     mkHill(2000, 270, 230, 50);
     mkHill(2800, 420, 100, 50);
-    mkHill(3100, 340, 100, 50);
+    mkHill(3000, 420, 100, 50);
     
     mkHill(3550, 400, 100, 50);
     mkHill(3700, 300, 500, 50);
@@ -199,13 +199,20 @@
     });
     level.addEntity(gullSpawner);
 
-    var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
+    var montySpawner1 = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
         level.addEntity(Crafty.e("Monty").attr({x: attr.x, y: -300}));
     });
-    level.addEntity(montySpawner);
+    var montySpawner2 = Crafty.e("Spawner").attr({x: 5000, y: 0}).setTime(100000)
+      .bind("Spawn", function(attr) {
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x, y: -300}));
+    });
+    level.addEntity(montySpawner1);
+    level.addEntity(montySpawner2);
   };
 
   // Levels list
