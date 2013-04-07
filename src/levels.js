@@ -38,19 +38,15 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(40000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
-
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x});
-
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
-
-    level.addEntity(spawner);
+    level.addEntity(montySpawner);
   };
 
   function tutorialLevel() {
@@ -59,7 +55,7 @@
 
 //    Crafty.e('2D, Canvas, Image').image("assets/tausta1.jpg", "repeat")
 //      .attr({x:0, y:0, w: 2597});
-//    this.image("assets/tausta1.jpg", "repeat");      
+//    this.image("assets/tausta1.jpg", "repeat");
     Crafty.background('url(assets/tausta1_2.jpg) repeat');
 
     // Ground
@@ -74,49 +70,23 @@
     level.addEntity(Crafty.e("Butter").attr({x: 1655, origY: 345}));
     level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
 
+    function mkHill(x, y, h, w) {
+      level.addEntity(Crafty.e("RectObstacle, Image")
+                      .image("assets/hills-texture.jpg", "repeat")
+                      .attr({ x: x, y: y, h: h, w: w })
+                      .rectobstacle());
+    }
+
     // Hills
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 300, y: 450, h: 50, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 50)")
-                    .attr({ x: 800, y: 350, h: 150, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 980, y: 450, h: 50, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1100, y: 380, h: 20, w: 200})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1400, y: 380, h: 20, w: 100})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1600, y: 320, h: 180, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1650, y: 420, h: 80, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("Obstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1800, y: 330, h: 80, w: 100}));
-
-    level.addEntity(Crafty.e("Obstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 2000, y: 270, h: 230, w: 50}));
+    mkHill(300, 450, 50, 50);
+    mkHill(800, 350, 150, 50);
+    mkHill(980, 450, 50, 50);
+    mkHill(1100, 380, 20, 200);
+    mkHill(1400, 380, 20, 100);
+    mkHill(1600, 320, 180, 50);
+    mkHill(1650, 420, 80, 50);
+    mkHill(1800, 330, 80, 100);
+    mkHill(2000, 270, 230, 50);
 
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
                     .attr({ x: 2500, y: 212}));
@@ -129,26 +99,23 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
 
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x, y: -300});
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x, y: -300}));
 
     });
-
-    level.addEntity(spawner);
     level.addEntity(montySpawner);
   };
 
   function level2() {
     var level = Crafty.e("Level")
       .bounds(700, 2597);
-      
+
       //korjaa epästaattisesti
     Crafty.background('url(assets/tausta2_2.jpg) repeat');
 
@@ -166,71 +133,29 @@
     level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
 
     // Hills
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 300, y: 450, h: 50, w: 50})
-                    .rectobstacle());
+    function mkHill(x, y, h, w) {
+      var hill = Crafty.e("RectObstacle, Image")
+        .image("assets/pavement-texture.jpg", "repeat")
+        .attr({ x: x, y: y, h: h, w: w })
+        .rectobstacle()
+      level.addEntity(hill);
+      return hill;
+    }
 
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 50)")
-                    .attr({ x: 800, y: 350, h: 150, w: 50})
-                    .rectobstacle());
+    mkHill(300, 450, 50, 50);
+    mkHill(800, 350, 150, 50);
+    mkHill(980, 450, 40, 40);
+    mkHill(1100, 380, 20, 200);
+    mkHill(1400, 380, 20, 100);
+    mkHill(1600, 320, 180, 50);
+    mkHill(1650, 420, 80, 50);
+    mkHill(1800, 330, 80, 100);
+    mkHill(2000, 270, 230, 50);
+    mkHill(2800, 420, 100, 50);
+    mkHill(3100, 340, 100, 50);
+    mkHill(3600, 500, 100, 50);
+    mkHill(3900, 150, 500, 50);
 
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 980, y: 450, h: 50, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1100, y: 380, h: 20, w: 200})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1400, y: 380, h: 20, w: 100})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1600, y: 320, h: 180, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1650, y: 420, h: 80, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1800, y: 330, h: 80, w: 100})
-            .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 2000, y: 270, h: 230, w: 50})
-            .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-        .color("rgb(0, 200, 0)")
-        .attr({ x: 2800, y: 420, h: 100, w: 50})
-        .rectobstacle());
-    
-    level.addEntity(Crafty.e("RectObstacle, Color")
-        .color("rgb(0, 200, 0)")
-        .attr({ x: 3100, y: 340, h: 100, w: 50})
-        .rectobstacle());
-        
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 3600, y: 500, h: 100, w: 50})
-            .rectobstacle());
-    
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 3900, y: 150, h: 500, w: 50})
-            .rectobstacle());
-    
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
                     .attr({ x: 4752, y: 212}));
 
@@ -242,19 +167,20 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
+
+    var gullSpawner = Crafty.e("Spawner").attr({x: 2000, y: 400}).setTime(10000)
+      .bind("Spawn", function(attr) {
+        level.addEntity(Crafty.e("Gull").at(attr.x, attr.y));
+    });
+    level.addEntity(gullSpawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
-
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x, y: -300});
-
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
-
-    level.addEntity(spawner);
     level.addEntity(montySpawner);
   };
 
@@ -262,6 +188,7 @@
   var levels = {
     "test": testlevel,
     "tutorial": tutorialLevel,
+    "berrypie": level2
   };
 
 
