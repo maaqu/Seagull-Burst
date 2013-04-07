@@ -118,8 +118,20 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
-  
+    
+    var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
+      .bind("Spawn", function(attr) {
+        console.log("spawning MONTY");
+
+    
+    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
+    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
+    Crafty.e("Monty").attr({x: attr.x});
+
+    });
+
     level.addEntity(spawner);
+    level.addEntity(montySpawner);
   };
   
   // Levels list

@@ -85,9 +85,17 @@ Crafty.scene('Level1', function() {
   this._onDeath = function() {
     Crafty.scene('Death');
   };
+  this._onVictory = function () {
+    Crafty.scene('Victory');
+  };
+  
   Crafty("Player").bind("Death", this._onDeath);
-},function() {
+  Crafty("Player").bind("Victory", this._onVictory);
+},
+
+function() {
   Crafty("Player").unbind("Death", this._onDeath);
+  Crafty("Player").unbind("Victory", this._onVictory);
   Crafty("Level, Camera").destroy();
 });
 
