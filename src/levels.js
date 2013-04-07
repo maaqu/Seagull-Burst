@@ -38,19 +38,15 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(40000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
-
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x});
-
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
-
-    level.addEntity(spawner);
+    level.addEntity(montySpawner);
   };
 
   function tutorialLevel() {
@@ -59,7 +55,7 @@
 
 //    Crafty.e('2D, Canvas, Image').image("assets/tausta1.jpg", "repeat")
 //      .attr({x:0, y:0, w: 2597});
-//    this.image("assets/tausta1.jpg", "repeat");      
+//    this.image("assets/tausta1.jpg", "repeat");
     Crafty.background('url(assets/tausta1_2.jpg) repeat');
 
     // Ground
@@ -129,26 +125,21 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
-
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x});
-
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
-
-    level.addEntity(spawner);
     level.addEntity(montySpawner);
   };
 
   function level2() {
     var level = Crafty.e("Level")
       .bounds(700, 2597);
-      
+
       //korjaa epästaattisesti
     Crafty.background('url(assets/tausta2_2.jpg) repeat');
 
@@ -215,22 +206,22 @@
         .color("rgb(0, 200, 0)")
         .attr({ x: 2800, y: 420, h: 100, w: 50})
         .rectobstacle());
-    
+
     level.addEntity(Crafty.e("RectObstacle, Color")
         .color("rgb(0, 200, 0)")
         .attr({ x: 3100, y: 340, h: 100, w: 50})
         .rectobstacle());
-        
+
     level.addEntity(Crafty.e("RectObstacle, Color")
             .color("rgb(0, 200, 0)")
             .attr({ x: 3600, y: 500, h: 100, w: 50})
             .rectobstacle());
-    
+
     level.addEntity(Crafty.e("RectObstacle, Color")
             .color("rgb(0, 200, 0)")
             .attr({ x: 3900, y: 150, h: 500, w: 50})
             .rectobstacle());
-    
+
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
                     .attr({ x: 4752, y: 212}));
 
@@ -242,20 +233,16 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Pigeon").at(attr.x, attr.y));
     });
+    level.addEntity(spawner);
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
-        console.log("spawning MONTY");
-
-
-    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
-    Crafty.e("Monty").attr({x: attr.x, y: -300});
-
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
+        level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
-
-    level.addEntity(spawner);
     level.addEntity(montySpawner);
+
   };
 
   // Levels list
