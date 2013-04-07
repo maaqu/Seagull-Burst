@@ -102,7 +102,7 @@
     });
     level.addEntity(spawner);
 
-    var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
+    var montySpawner = Crafty.e("Spawner").attr({x: 2000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
@@ -194,7 +194,7 @@
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
-        level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
+        level.addEntity(Crafty.e("Monty").attr({x: attr.x, y: -300}));
     });
     level.addEntity(montySpawner);
   };
