@@ -1,27 +1,30 @@
 (function() {
   "use strict";
 
+  var FULL_HP = 8;
+
   Crafty.c('Player', {
     init: function() {
       this.requires('Actor, Collision, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player')
         .twoway(4.0, 4.0)
-        .attr({powerups: 0})
+        .attr({_powerups: 0, _health: FULL_HP, _baking: false})
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Shit", function() {
           this.trigger("LoseHealth", 1);
         })
         .onHit("Powerup", function(powerups) {
-          this.powerups += 1;
+          this._powerups += 1;
           var powerup = powerups[0].obj;
           powerup.trigger("Picked");
         })
         .animate('PlayerMovingRight', 0, 0, 7)
         .animate('PlayerMovingLeft', 0, 9, 7);
 
-      this.health = 8;
       this.bind("Moved", function(old) {
         var hits = this.hit("Obstacle");
+
+        this._baking = false;
 
         if(hits) {
           // Encountered a solid obstacle?
@@ -66,25 +69,35 @@
       this.bind("EnterFrame", this._playerFrame);
 
       this.bind("LoseHealth", this._loseHealth);
+      this.bind("GainHealth", this._gainHealth);
     },
 
     _loseHealth: function(amount) {
-      this.health -= amount;
+      this._health -= amount;
 
-      // Switch to lower HP form
-      this.animate('PlayerMovingRight', 0, 8 - this.health, 7);
-      this.animate('PlayerMovingLeft', 0, 17 - this.health, 7);
+      this._refreshAnimation();
 
-      // TODO: Get current frame position, move to it's lower HP form
-      this.animate('PlayerMovingRight', 0, 0);
-      this.animate('PlayerMovingLeft', 0, 0);
-
-      if (this.health <= 0) {
+      if (this._health <= 0) {
         console.log("Died.");
         this.deathAnimation();
         this.trigger("Death");
       }
     },
+    _gainHealth: function() {
+      this._health += 1;
+      this._refreshAnimation();
+    },
+
+    _refreshAnimation: function() {
+      // Switch to lower HP form
+      this.animate('PlayerMovingRight', 0, 8 - this._health, 7);
+      this.animate('PlayerMovingLeft', 0, 17 - this._health, 7);
+
+      // TODO: Get current frame position, move to it's lower HP form
+      this.animate('PlayerMovingRight', 0, 0);
+      this.animate('PlayerMovingLeft', 0, 0);
+    },
+
     deathAnimation: function() {
     // TODO: kuolema-animaatio
     },
@@ -125,7 +138,17 @@
     },
 
     baking: function() {
-      console.log("BAKING POWER: "+ this.powerups);
+      if (this._health < FULL_HP && this._powerups >= 2 && !this._baking) {
+        console.log("BAKING");
+        this._baking = true;
+        this.delay(function() {
+          if (this._baking) {
+            console.log("Baking over");
+            this._powerups -= 2;
+            this.trigger("GainHealth");
+          }
+        }, 2000);
+      }
     }
   });
 }());

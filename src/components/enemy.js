@@ -23,7 +23,7 @@
         w: 88,
         h: 44
       });
-      
+
       this.animate('PigeonMovingLeft', 4, -1);
       this.shitting();
     },
@@ -31,7 +31,7 @@
       this.delay(function() {
         Crafty.e("Shit").attr({x: (this.x+this.w), y: (this.y+this.h)});
         this.shitting();
-      }, Math.floor((Math.random()*10)+1) * 200);
+      }, Crafty.math.randomInt(100, 2000));
     }
   });
 

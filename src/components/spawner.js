@@ -13,7 +13,7 @@
     },
     _spawner: function() {
       this.delay(function() {
-        var y = this.y - Math.floor((Math.random()*10)+1)*50;
+        var y = this.y - Crafty.math.randomInt(50, 450);
         this.trigger("Spawn", {x: this.x, y: y});
         this._spawner();
       }, this.time);
