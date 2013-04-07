@@ -17,7 +17,6 @@
   Crafty.c('Leg', {
     init: function() {
       this.requires('2D, Canvas, Enemy, Delay, Collision')
-        .attr({w: 200, h: 400, origY: 0, deltaY: 0, delta: 1})
         .bind("EnterFrame", function() {
           if (this.deltaY > 170 && this.delta == 1){
             this.delta = -1;
@@ -33,7 +32,8 @@
 
   Crafty.c("Foot", {
     init: function() {
-      this.requires("Leg, spr_monty");
+      this.requires("Leg, spr_monty, WiredHitBox")
+        .collision(new Crafty.polygon([25, 390], [280, 340], [266, 100], [410, 100], [400, 350], [415, 470], [75, 470]));
     }
   });
 
