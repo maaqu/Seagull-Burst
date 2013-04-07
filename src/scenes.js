@@ -107,7 +107,7 @@
   //Second level
   Crafty.scene('Level2', function() {
 
-    loadLevel("test"); //TODO: CHANGE
+    loadLevel("berrypie");
 
     //Make victory condition
 

@@ -42,7 +42,7 @@
       this.requires("Enemy, spr_pilvi")
     }
   });
-  
+
   Crafty.c('Pigeon', {
     init: function() {
       this.requires('Enemy, Bird, Delay, SpriteAnimation, spr_pigeon')
@@ -61,6 +61,20 @@
         Crafty.e("Shit").attr({x: (this.x+this.w), y: (this.y+this.h)});
         this.shitting();
       }, Crafty.math.randomInt(100, 2000));
+    }
+  });
+
+  Crafty.c('Gull', {
+    init: function() {
+      this.requires('Enemy, Bird, Delay, SpriteAnimation, spr_seagull')
+        .animate('SeagullMovingLeft', 0, 0, 3);
+
+      this.attr({
+        w: 88,
+        h: 44
+      });
+
+      this.animate('SeagullMovingLeft', 4, -1);
     }
   });
 
