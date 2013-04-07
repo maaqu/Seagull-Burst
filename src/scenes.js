@@ -37,7 +37,7 @@
       if(e.key == Crafty.keys['ENTER']) {
         if (selectedindex == 0){Crafty.scene('Level1');}
         else if (selectedindex == 1){Crafty.scene('Level2');}
-        else if (selectedindex == 2){window.open('http://serveri.tulilaulu.net/hiscores.html','','width=200,height=600')}
+        else if (selectedindex == 2){Crafty.scene('Hiscore');}
         else if (selectedindex == 3){Crafty.scene('Credits');}
       }
       else if(e.key == Crafty.keys['UP_ARROW']) {
@@ -157,6 +157,32 @@
   //Victory scene
   Crafty.scene('Victory', function() {
     Crafty.e('2D, Canvas, Image').image("assets/victory.jpg");
+
+    this._onKeyDown = function(e) {
+      Crafty.scene('Menu');
+    };
+    this.bind('KeyDown', this._onKeyDown);
+  }, function() {
+    this.unbind('KeyDown', this._onKeyDown);
+  });
+
+  //Hiscore
+  Crafty.scene('Hiscore', function() {
+    Crafty.e('2D, Canvas, Image').image("assets/hiscores.jpg");
+
+    Hiscore.loadScores("level1", function (data){
+       for (var i = 0; i < data.length; i++){
+        Crafty.e("2D, DOM, Text").attr({ x: 200, y: 260+i*30 }).text(data[i].name+": "+data[i].score)
+      .textColor('#000000');
+      }
+    })
+    Hiscore.loadScores("level2", function (data){
+      for (var i = 0; i < data.length; i++){
+        Crafty.e("2D, DOM, Text").attr({ x: 500, y: 260+i*30 }).text(data[i].name+": "+data[i].score)
+      .textColor('#000000');
+      }
+    })
+    
 
     this._onKeyDown = function(e) {
       Crafty.scene('Menu');
