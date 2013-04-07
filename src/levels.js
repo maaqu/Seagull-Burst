@@ -65,7 +65,8 @@
                     .attr({ x: 2400, y: 500, h: 100, w: 250}));
 
     // Powerups
-    level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
+    level.addEntity(Crafty.e("Apple").attr({x: 170, origY: 400}));    
+    level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 230}));
     level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
     level.addEntity(Crafty.e("Butter").attr({x: 1655, origY: 345}));
     level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
@@ -103,13 +104,27 @@
 
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
-
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1}));
         level.addEntity(Crafty.e("Monty").attr({x: attr.x, y: -300}));
-
     });
-    level.addEntity(montySpawner);
+    level.addEntity(montySpawner);  
+    //Tutorial texts  
+    Crafty.e("2D, DOM, Text").attr({ x: 50, y: 150 }).text("Gather&nbsp;ingredients. They&nbsp;will&nbsp;help&nbsp;along&nbsp;the&nbsp;way.")
+    .textColor('#020A75');
+
+    Crafty.e("2D, DOM, Text").attr({ x: 370, y: 420 }).text("Watch&nbsp;out&nbsp;for&nbsp;birds and&nbsp;other&nbsp;things&nbsp;that&nbsp;might eat&nbsp;or&nbsp;soil&nbsp;you!")
+    .textColor('#020A75');
+
+    Crafty.e("2D, DOM, Text").attr({ x: 630, y: 170 }).text("Ants&nbsp;will&nbsp;help&nbsp;by&nbsp;carrying&nbsp;you if&nbsp;you&nbsp;press&nbsp;z,&nbsp;but&nbsp;they&nbsp;will take&nbsp;some&nbsp;pie&nbsp;as&nbsp;their&nbsp;pay...")
+    .textColor('#020A75');
+    
+    Crafty.e("2D, DOM, Text").attr({ x: 920, y: 100, w:400 }).text("If&nbsp;you&nbsp;find&nbsp;time&nbsp;for&nbsp;a&nbsp;break, you&nbsp;can&nbsp;bake&nbsp;by&nbsp;pressing&nbsp;x if&nbsp;you&nbsp;have&nbsp;the&nbsp;ingredients, but&nbsp;it&nbsp;will&nbsp;take&nbsp;some&nbsp;time...")
+    .textColor('#020A75');
+
+    Crafty.e("2D, DOM, Text").attr({ x: 1400, y: 160 }).text("Good&nbsp;luck!")
+    .textColor('#DD0000');
+
   };
 
   function level2() {
