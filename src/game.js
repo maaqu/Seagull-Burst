@@ -13,7 +13,6 @@
         "assets/logo.png",
         "assets/menubg.jpg",
         "assets/pie_sprite.png",
-        "assets/powerup_sprite.png",
         "assets/seagull.png",
         "assets/selector.png",
         "assets/stellarartwars.mp3",
