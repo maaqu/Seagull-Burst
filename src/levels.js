@@ -55,19 +55,19 @@
 
   function tutorialLevel() {
     var level = Crafty.e("Level")
-      .bounds(700, 5000);
+      .bounds(700, 2597);
   
     // Ground
     level.addEntity(Crafty.e("Ground")
-                    .attr({ x: 0, y: 500, h: 100, w: 3800}));
-
+                    .attr({ x: 0, y: 500, h: 100, w: 1700}));
     level.addEntity(Crafty.e("Ground")
-                    .attr({ x: 4000, y: 500, h: 100, w: 1000}));
+                    .attr({ x: 2400, y: 500, h: 100, w: 250}));
     
     // Powerups
     level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
     level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
     level.addEntity(Crafty.e("Butter").attr({x: 1655, origY: 345}));
+    level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
     
     // Hills
     level.addEntity(Crafty.e("RectObstacle, Color")
@@ -104,6 +104,17 @@
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 1650, y: 420, h: 80, w: 50})
                     .rectobstacle());
+    
+    level.addEntity(Crafty.e("Obstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 1800, y: 330, h: 80, w: 100}));
+    
+    level.addEntity(Crafty.e("Obstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 2000, y: 270, h: 230, w: 50}));
+    
+    level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
+                    .attr({ x: 2500, y: 212}));
     
     // Player
     level.addEntity(setupPlayer(5, 500));
