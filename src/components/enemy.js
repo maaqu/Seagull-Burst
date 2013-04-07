@@ -46,7 +46,7 @@
   });
   Crafty.c('Pigeon', {
     init: function() {
-      this.requires('Enemy, Delay, SpriteAnimation, spr_pigeon')
+      this.requires('Enemy, Bird, Delay, SpriteAnimation, spr_pigeon')
         .animate('PigeonMovingLeft', 0, 2, 3);
 
       this.attr({
@@ -70,7 +70,7 @@
       this.requires('Actor, Color, Collision')
         .attr({w: 3, h: 10})
         .color("white")
-        .onHit("Actor", this.splats)
+        .onHit("Player", this.splats)
         .onHit("Obstacle", this.splats)
         .bind("EnterFrame", function() {
           this.y += 10;

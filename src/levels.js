@@ -55,14 +55,15 @@
 
   function tutorialLevel() {
     var level = Crafty.e("Level")
-      .bounds(700, 2597);
+      .bounds(700, 4850);
 
     // Ground
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 0, y: 500, h: 100, w: 1700}));
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 2400, y: 500, h: 100, w: 250}));
-
+    level.addEntity(Crafty.e("Ground")
+                    .attr({ x: 4500, y: 500, h: 100, w: 350}));
     // Powerups
     level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
     level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
@@ -105,16 +106,38 @@
                     .attr({ x: 1650, y: 420, h: 80, w: 50})
                     .rectobstacle());
 
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color")
             .color("rgb(0, 200, 0)")
-            .attr({ x: 1800, y: 330, h: 80, w: 100}));
+            .attr({ x: 1800, y: 330, h: 80, w: 100})
+            .rectobstacle());
 
-    level.addEntity(Crafty.e("Obstacle, Color")
+    level.addEntity(Crafty.e("RectObstacle, Color")
             .color("rgb(0, 200, 0)")
-            .attr({ x: 2000, y: 270, h: 230, w: 50}));
+            .attr({ x: 2000, y: 270, h: 230, w: 50})
+            .rectobstacle());
 
+    level.addEntity(Crafty.e("RectObstacle, Color")
+        .color("rgb(0, 200, 0)")
+        .attr({ x: 2800, y: 420, h: 100, w: 50})
+        .rectobstacle());
+    
+    level.addEntity(Crafty.e("RectObstacle, Color")
+        .color("rgb(0, 200, 0)")
+        .attr({ x: 3100, y: 340, h: 100, w: 50})
+        .rectobstacle());
+        
+    level.addEntity(Crafty.e("RectObstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 3600, y: 500, h: 100, w: 50})
+            .rectobstacle());
+    
+    level.addEntity(Crafty.e("RectObstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 3900, y: 150, h: 500, w: 50})
+            .rectobstacle());
+    
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
-                    .attr({ x: 2500, y: 212}));
+                    .attr({ x: 4752, y: 212}));
 
     // Player
     level.addEntity(setupPlayer(5, 500));

@@ -2,16 +2,20 @@
   "use strict";
 
   var FULL_HP = 8;
+  var INVULNERABLE = 1000;
 
   Crafty.c('Player', {
     init: function() {
       this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision, WiredHitBox')
         .twoway(4.0, 4.0)
-        .attr({_powerups: 0, _health: FULL_HP, _baking: false})
+        .attr({_powerups: 0, _health: FULL_HP, _baking: false, _canTakeDamage: true})
         .pieShape()
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Shit", function() {
+          this.trigger("LoseHealth", 1);
+        })
+        .onHit("Bird", function() {
           this.trigger("LoseHealth", 1);
         })
         .onHit("Leg", function() {
@@ -98,6 +102,11 @@
     },
 
     _loseHealth: function(amount) {
+      if (!this._canTakeDamage) {
+        return;
+      }
+      this._canTakeDamage = false;
+
       this._health -= amount;
 
       this._refreshAnimation();
@@ -106,6 +115,10 @@
         console.log("Died.");
         this.deathAnimation();
         this.trigger("Death");
+      } else {
+        this.delay(function() {
+          this._canTakeDamage = true;
+        }, INVULNERABLE);
       }
     },
     _gainHealth: function() {
