@@ -4,7 +4,9 @@
     // Initialize and start our game
     start: function() {
       Crafty.load([
-        "assets/pie_sprite.png", "assets/bird_sprite.png"
+        "assets/pie_sprite.png",
+        "assets/bird_sprite.png",
+        "assets/powerup_sprite.png"
       ],
       function() {
 
@@ -15,6 +17,14 @@
         Crafty.sprite(88, 44, "assets/bird_sprite.png", {
           spr_seagull: [0,0],
           spr_pigeon: [0,2]
+        });
+        
+        Crafty.sprite(30, 34, "assets/powerup_sprite.png", {
+            spr_berry: [2,0],
+            spr_strawberry: [3,0],
+            spr_flour: [0,0],
+            spr_butter: [1,0],
+            spr_apple: [4,0],
         });
         
         // Start crafty and set a background color so that we can see it's working

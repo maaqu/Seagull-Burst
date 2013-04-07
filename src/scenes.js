@@ -23,7 +23,7 @@ Crafty.scene('Menu', function() {
     .attr({alpha: 1.0, x: 0, y: 0 });
   
   var ycoordinates = [275, 334, 397, 457];      
-  var xcoordinates = [460, 268, 455, 285];      
+  var xcoordinates = [460, 268, 452, 285];      
   var selectedindex = 0;
   var selector = Crafty.e("2D, DOM, Image, Tween")
     .image("assets/selector.png")
