@@ -63,7 +63,7 @@
 //    Crafty.e('2D, Canvas, Image').image("assets/tausta1.jpg", "repeat")
 //      .attr({x:0, y:0, w: 2597});
 //    this.image("assets/tausta1.jpg", "repeat");      
-    Crafty.background('url(assets/tausta1.jpg) repeat');
+    Crafty.background('url(assets/tausta1_2.jpg) repeat');
 
     // Ground
     level.addEntity(Crafty.e("Ground")
@@ -153,7 +153,7 @@
       .bounds(700, 2597);
       
       //korjaa epästaattisesti
-    Crafty.background('url(assets/tausta2.jpg) repeat');
+    Crafty.background('url(assets/tausta2_2.jpg) repeat');
 
     // Ground
     level.addEntity(Crafty.e("Ground")
