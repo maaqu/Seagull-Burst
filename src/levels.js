@@ -209,6 +209,12 @@
     });
     level.addEntity(spawner);
 
+    var gullSpawner = Crafty.e("Spawner").attr({x: 2000, y: 400}).setTime(10000)
+      .bind("Spawn", function(attr) {
+        level.addEntity(Crafty.e("Gull").at(attr.x, attr.y));
+    });
+    level.addEntity(gullSpawner);
+
     var montySpawner = Crafty.e("Spawner").attr({x: 1000, y: 0}).setTime(200000)
       .bind("Spawn", function(attr) {
         level.addEntity(Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100}));
@@ -216,13 +222,13 @@
         level.addEntity(Crafty.e("Monty").attr({x: attr.x}));
     });
     level.addEntity(montySpawner);
-
   };
 
   // Levels list
   var levels = {
     "test": testlevel,
     "tutorial": tutorialLevel,
+    "berrypie": level2
   };
 
 

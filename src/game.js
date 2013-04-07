@@ -39,11 +39,11 @@
         Crafty.sprite(442, 397, "assets/Monty_foot_sprite.png", {
           spr_monty: [0,0],
         });
-        
+
         Crafty.sprite(1003, 516, "assets/pilvi.png", {
           spr_pilvi: [0,0],
         });
-        
+
         Crafty.sprite(30, 34, "assets/powerup_sprite.png", {
           spr_berry: [2,0],
           spr_strawberry: [3,0],
