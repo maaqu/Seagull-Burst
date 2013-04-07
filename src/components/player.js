@@ -55,6 +55,7 @@
             this.carriedOverObstacle(hits);
           // Undo movement
           else {
+            console.log("Undid movement");
             this.x = old.x;
             this.y = old.y;
           }
