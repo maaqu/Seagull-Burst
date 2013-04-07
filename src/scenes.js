@@ -116,9 +116,17 @@
     this._onDeath = function() {
       Crafty.scene('Death');
     };
+    this._onOOB = function(evt) {
+      if(evt.exceededY)
+        Crafty.scene("Death");
+    }
     Crafty("Player").bind("Death", this._onDeath);
+    Crafty("Player").bind("WentOutOfBounds", this._onOOB);
+    Crafty("Player").bind("Victory", this._onVictory);
   },function() {
     Crafty("Player").unbind("Death", this._onDeath);
+    Crafty("Player").unbind("WentOutOfBounds", this._onOOB);
+    Crafty("Player").unbind("Victory", this._onVictory);
     Crafty("Level, Camera").destroy();
   });
 

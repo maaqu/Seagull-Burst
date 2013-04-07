@@ -149,70 +149,28 @@
     level.addEntity(Crafty.e("Apple").attr({x: 1850, origY: 250}));
 
     // Hills
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 300, y: 450, h: 50, w: 50})
-                    .rectobstacle());
+    function mkHill(x, y, h, w) {
+      var hill = Crafty.e("RectObstacle, Image")
+        .image("assets/pavement-texture.jpg", "repeat")
+        .attr({ x: x, y: y, h: h, w: w })
+        .rectobstacle()
+      level.addEntity(hill);
+      return hill;
+    }
 
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 50)")
-                    .attr({ x: 800, y: 350, h: 150, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 980, y: 450, h: 50, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1100, y: 380, h: 20, w: 200})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1400, y: 380, h: 20, w: 100})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1600, y: 320, h: 180, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-                    .color("rgb(0, 200, 0)")
-                    .attr({ x: 1650, y: 420, h: 80, w: 50})
-                    .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 1800, y: 330, h: 80, w: 100})
-            .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 2000, y: 270, h: 230, w: 50})
-            .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-        .color("rgb(0, 200, 0)")
-        .attr({ x: 2800, y: 420, h: 100, w: 50})
-        .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-        .color("rgb(0, 200, 0)")
-        .attr({ x: 3100, y: 340, h: 100, w: 50})
-        .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 3600, y: 500, h: 100, w: 50})
-            .rectobstacle());
-
-    level.addEntity(Crafty.e("RectObstacle, Color")
-            .color("rgb(0, 200, 0)")
-            .attr({ x: 3900, y: 150, h: 500, w: 50})
-            .rectobstacle());
+    mkHill(300, 450, 50, 50);
+    mkHill(800, 350, 150, 50);
+    mkHill(980, 450, 40, 40);
+    mkHill(1100, 380, 20, 200);
+    mkHill(1400, 380, 20, 100);
+    mkHill(1600, 320, 180, 50);
+    mkHill(1650, 420, 80, 50);
+    mkHill(1800, 330, 80, 100);
+    mkHill(2000, 270, 230, 50);
+    mkHill(2800, 420, 100, 50);
+    mkHill(3100, 340, 100, 50);
+    mkHill(3600, 500, 100, 50);
+    mkHill(3900, 150, 500, 50);
 
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
                     .attr({ x: 4752, y: 212}));
