@@ -22,7 +22,7 @@
           var powerup = powerups[0].obj;
           powerup.trigger("Picked");
         })
-        .onHit("Cafe", function() {
+        .onHit("spr_cafe", function() {
           this.trigger("Victory");
         })
         .animate('PlayerRollingRight', 0, 0, 7)
