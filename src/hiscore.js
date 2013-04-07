@@ -2,14 +2,14 @@
   "use strict";
 
   var Hiscore = {
-    saveScore: function(name, score) {
-      this.loadScores(function(data) {
+    saveScore: function(level, name, score) {
+      this.loadScores(level, function(data) {
         data.push({name: name, score: score});
-        localStorage.setItem("hiscore", JSON.stringify(data));
+        localStorage.setItem(level, JSON.stringify(data));
       });
     },
-    loadScores: function(callback) {
-      var items = localStorage.getItem("hiscore");
+    loadScores: function(level, callback) {
+      var items = localStorage.getItem(level);
       callback(!!items ? JSON.parse(items) : []);
     }
   };
