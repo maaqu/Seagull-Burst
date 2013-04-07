@@ -14,9 +14,13 @@
     // Ground
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 0, y: 500, h: 100, w: 1600}));
-    // Powerup
-    level.addEntity(Crafty.e("Powerup").attr({x: 400, origY: 300}));
-
+    // Powerups
+    level.addEntity(Crafty.e("Berry").attr({x: 100, origY: 300}));
+    level.addEntity(Crafty.e("Strawberry").attr({x: 200, origY: 300}));
+    level.addEntity(Crafty.e("Flour").attr({x: 300, origY: 300}));
+    level.addEntity(Crafty.e("Butter").attr({x: 400, origY: 300}));
+    level.addEntity(Crafty.e("Apple").attr({x: 500, origY: 300}));
+    
     // Hills
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 0)")
