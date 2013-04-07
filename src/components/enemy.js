@@ -39,11 +39,10 @@
 
   Crafty.c("Monty", {
     init: function() {
-      this.requires("Enemy, Color")
-        .attr({w: 500, h: 100, y: 0})
-        .color("rgb(20, 20, 20)")
+      this.requires("Enemy, spr_pilvi")
     }
   });
+  
   Crafty.c('Pigeon', {
     init: function() {
       this.requires('Enemy, Bird, Delay, SpriteAnimation, spr_pigeon')
