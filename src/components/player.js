@@ -5,9 +5,10 @@
 
   Crafty.c('Player', {
     init: function() {
-      this.requires('Actor, Collision, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player')
+      this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision, WiredHitBox')
         .twoway(4.0, 4.0)
         .attr({_powerups: 0, _health: FULL_HP, _baking: false})
+        .collision(new Crafty.polygon([0,18], [18,0], [47,0], [65,18], [65,47], [47, 65], [18,65], [0,47]))
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Shit", function() {
@@ -126,11 +127,12 @@
     },
 
     carriedOverObstacle: function(entity) {
-      var newY = entity[0].obj._y - this._h;
-
-      console.log("Carry: " + this.y + " => " + newY);
-
-      this.y = newY;
+        var newY = entity[0].obj._y - this._h;
+  
+        console.log("Carry: " + this.y + " => " + newY);
+  
+        this.y = newY;
+      
     },
 
     ants: function() {
@@ -140,11 +142,16 @@
       }
       this.trigger("LoseHealth", 1);
       this.carried = true;
+      
+      this.collision(new Crafty.polygon([0,44], [65,44], [65,65], [0,65]));
+      
       this.delay(function() {
         this.carried = false;
         console.log("Carry-walk over");
         this.animate('PlayerRollingRight', 0, 0);
         this.animate('PlayerRollingLeft', 0, 0);
+        this.collision(new Crafty.polygon([0,18], [18,0], [47,0], [65,18], [65,47], [47, 65], [18,65], [0,47]));
+
       }, 5000);
 
       // TODO: Change sprite to ant-carried

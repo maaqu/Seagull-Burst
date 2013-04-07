@@ -66,28 +66,37 @@
     
     // Powerups
     level.addEntity(Crafty.e("Apple").attr({x: 700, origY: 415}));
-    level.addEntity(Crafty.e("Flour").attr({x: 1250, origY: 325}));
+    level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
+    level.addEntity(Crafty.e("Butter").attr({x: 1655, origY: 345}));
     
     // Hills
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50}));
-    
+
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 50)")
                     .attr({ x: 800, y: 350, h: 150, w: 50}));
   
     level.addEntity(Crafty.e("Obstacle, Color")
                     .color("rgb(0, 200, 0)")
-                    .attr({ x: 1000, y: 450, h: 50, w: 50}));
+                    .attr({ x: 980, y: 450, h: 50, w: 50}));
   
     level.addEntity(Crafty.e("Obstacle, Color")
                 .color("rgb(0, 200, 0)")
-                .attr({ x: 1100, y: 400, h: 20, w: 200}));
+                .attr({ x: 1100, y: 380, h: 20, w: 200}));
     
     level.addEntity(Crafty.e("Obstacle, Color")
             .color("rgb(0, 200, 0)")
-            .attr({ x: 1200, y: 400, h: 20, w: 100}));
+            .attr({ x: 1400, y: 380, h: 20, w: 100}));
+
+    level.addEntity(Crafty.e("Obstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 1600, y: 320, h: 180, w: 50}));
+    
+    level.addEntity(Crafty.e("Obstacle, Color")
+            .color("rgb(0, 200, 0)")
+            .attr({ x: 1650, y: 420, h: 80, w: 50}));
     
     // Player
     level.addEntity(setupPlayer(5, 500));
