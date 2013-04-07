@@ -42,10 +42,12 @@
 
       // If the player tried to exceed the level bounds, broadcast an event
       // about it.
-      this.trigger("WentOutOfBounds", {
-        x: oldX, y: oldY,
-        exceededX: exceededX, exceededY: exceededY
-      });
+      if(exceededX || exceededY) {
+        this.trigger("WentOutOfBounds", {
+          x: oldX, y: oldY,
+          exceededX: exceededX, exceededY: exceededY
+        });
+      }
     }
   });
 }());
