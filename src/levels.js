@@ -23,7 +23,7 @@
     level.addEntity(Crafty.e("Apple").attr({x: 500, origY: 300}));
 
     // Hills
-    level.addEntity(Crafty.e("RectObstacle, Color, WiredHitBox")
+    level.addEntity(Crafty.e("RectObstacle, Color")
                     .color("rgb(0, 200, 0)")
                     .attr({ x: 300, y: 450, h: 50, w: 50}));
     level.addEntity(Crafty.e("RectObstacle, Color")
