@@ -15,6 +15,7 @@
         "assets/logo.png",
         "assets/menubg.jpg",
         "assets/pie_sprite.png",
+        "assets/berrypie_sprite.png",
         "assets/seagull.png",
         "assets/selector.png",
         "assets/stellarartwars.mp3",
@@ -24,11 +25,15 @@
         "assets/tausta2.jpg",
         "assets/victory.jpg",
         "assets/cafe.png",
+        "assets/pavement-texture.jpg"
       ],
       function() {
 
         Crafty.sprite(66, "assets/pie_sprite.png", {
           spr_player: [0,0],
+        });
+        Crafty.sprite(66, "assets/berrypie_sprite.png", {
+          spr_playerBerry: [0,0],
         });
 
         Crafty.sprite(88, 44, "assets/bird_sprite.png", {
