@@ -15,6 +15,7 @@
         "assets/logo.png",
         "assets/menubg.jpg",
         "assets/pie_sprite.png",
+        "assets/berrypie_sprite.png",
         "assets/seagull.png",
         "assets/selector.png",
         "assets/stellarartwars.mp3",
@@ -24,6 +25,7 @@
         "assets/tausta2.jpg",
         "assets/victory.jpg",
         "assets/cafe.png",
+        "assets/pavement-texture.jpg"
       ],
       function() {
 
