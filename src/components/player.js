@@ -18,9 +18,11 @@
           var powerup = powerups[0].obj;
           powerup.trigger("Picked");
         })
-        .animate('PlayerMovingRight', 0, 0, 7)
-        .animate('PlayerMovingLeft', 0, 9, 7);
-
+        .animate('PlayerRollingRight', 0, 0, 7)
+        .animate('PlayerRollingLeft', 0, 9, 7)
+        .animate('PlayerWalkingRight', 0, 18, 1)
+        .animate('PlayerWalkingLeft', 0, 19, 1);
+        
       this.bind("Moved", function(old) {
         var hits = this.hit("Obstacle");
 
@@ -41,9 +43,15 @@
 
       this.bind("NewDirection", function(data) {
         if (data.x > 0) {
-          this.animate('PlayerMovingRight', 4, -1);
+          if (this.carried)
+            this.animate('PlayerWalkingRight', 6, -1);
+          else
+            this.animate('PlayerRollingRight', 4, -1);
         } else if (data.x < 0) {
-          this.animate('PlayerMovingLeft', 4, -1);
+          if (this.carried)
+            this.animate('PlayerWalkingLeft', 6, -1);
+          else
+            this.animate('PlayerRollingLeft', 4, -1);
         } else {
           this.stop();
         }
@@ -90,12 +98,12 @@
 
     _refreshAnimation: function() {
       // Switch to lower HP form
-      this.animate('PlayerMovingRight', 0, 8 - this._health, 7);
-      this.animate('PlayerMovingLeft', 0, 17 - this._health, 7);
+      this.animate('PlayerRollingRight', 0, 8 - this._health, 7);
+      this.animate('PlayerRollingLeft', 0, 17 - this._health, 7);
 
       // TODO: Get current frame position, move to it's lower HP form
-      this.animate('PlayerMovingRight', 0, 0);
-      this.animate('PlayerMovingLeft', 0, 0);
+      this.animate('PlayerRollingRight', 0, 0);
+      this.animate('PlayerRollingLeft', 0, 0);
     },
 
     deathAnimation: function() {
