@@ -34,7 +34,7 @@
       }
       else if(oldY + this.h > level.height) {
         this.y = level.height - this.h;
-        exceededy = true;
+        exceededY = true;
       
         if(this["stopFalling"])
           this.stopFalling(); // Also interrupt Gravity fall
