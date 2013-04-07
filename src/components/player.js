@@ -219,4 +219,16 @@
       this._baking = false;
     }
   });
+
+  Crafty.c("ApplePie", {
+    init: function() {
+      this.requires("Player, spr_player");
+    }
+  });
+
+  Crafty.c("BerryPie", {
+    init: function() {
+      this.requires("Player, spr_playerBerry");
+    }
+  });
 }());

@@ -30,6 +30,9 @@
         Crafty.sprite(66, "assets/pie_sprite.png", {
           spr_player: [0,0],
         });
+        Crafty.sprite(66, "assets/berrypie_sprite.png", {
+          spr_playerBerry: [0,0],
+        });
 
         Crafty.sprite(88, 44, "assets/bird_sprite.png", {
           spr_seagull: [0,0],
