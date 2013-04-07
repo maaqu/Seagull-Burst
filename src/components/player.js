@@ -45,7 +45,7 @@
 
         if(this._baking) {
           console.log("Baking interrupted by movement");
-          this._baking = false;
+          this._bakingOff();
         }
 
         if(hits) {
@@ -200,17 +200,21 @@
 
     baking: function() {
       if (this._health < FULL_HP && this._powerups >= 2 && !this._baking) {
-        console.log("BAKING");
         this._baking = true;
+        Crafty.trigger("Baking", {x: this.x, y: this.y});
         this.delay(function() {
           if (this._baking) {
-            console.log("Baking over");
             this._powerups -= 2;
             this.trigger("GainHealth");
-            this._baking = false;
+            this._bakingOff();
           }
         }, 2000);
       }
+    },
+
+    _bakingOff: function() {
+      Crafty.trigger("BakingOff");
+      this._baking = false;
     }
   });
 }());
