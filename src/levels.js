@@ -135,7 +135,7 @@
 
   function level2() {
     var level = Crafty.e("Level")
-      .bounds(700, 2597);
+      .bounds(700, 4500);
 
       //korjaa epästaattisesti
     Crafty.background('url(assets/tausta2_2.jpg) repeat');
@@ -146,7 +146,7 @@
     level.addEntity(Crafty.e("Ground")
                     .attr({ x: 2400, y: 500, h: 100, w: 250}));
     level.addEntity(Crafty.e("Ground")
-                    .attr({ x: 4500, y: 500, h: 100, w: 350}));
+                    .attr({ x: 3500, y: 500, h: 100, w: 1000}));
     // Powerups
     level.addEntity(Crafty.e("Berry").attr({x: 700, origY: 415}));
     level.addEntity(Crafty.e("Flour").attr({x: 1450, origY: 300}));
@@ -168,17 +168,20 @@
     mkHill(980, 450, 40, 40);
     mkHill(1100, 380, 20, 200);
     mkHill(1400, 380, 20, 100);
-    mkHill(1600, 320, 180, 50);
+    mkHill(1470, 420, 80, 50);
     mkHill(1650, 420, 80, 50);
     mkHill(1800, 330, 80, 100);
     mkHill(2000, 270, 230, 50);
     mkHill(2800, 420, 100, 50);
     mkHill(3100, 340, 100, 50);
-    mkHill(3600, 500, 100, 50);
-    mkHill(3900, 150, 500, 50);
+    
+    mkHill(3550, 400, 100, 50);
+    mkHill(3700, 300, 500, 50);
+    mkHill(3850, 360, 400, 50);
+    mkHill(4050, 150, 500, 50);
 
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
-                    .attr({ x: 4752, y: 212}));
+                    .attr({ x: 4402, y: 212}));
 
     // Player
     level.addEntity(setupPlayer("BerryPie", 5, 500));
