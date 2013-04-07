@@ -14,6 +14,36 @@
     }
   });
 
+  Crafty.c('Leg', {
+    init: function() {
+      this.requires('Enemy, Delay, Color, Collision')
+      .attr({w: 200, h: 400, origY: 0, deltaY: 0, delta: 1})
+      .color("rgb(10, 10, 10)")
+      .bind("EnterFrame", function() {
+        if (this.deltaY > 170 && this.delta == 1){
+          this.delta = -1;
+          console.log("top");
+        }
+        else if (this.deltaY <= 1 && this.delta == -1)
+          this.delta = 1;
+        this.deltaY += this.delta;
+        this.y = this.origY + this.deltaY;
+       });
+     }
+ });
+  Crafty.c("Monty", {
+  init: function() {
+  this.requires("Enemy, Color")
+  .attr({w: 500, h: 100, y: 0})
+  .color("rgb(20, 20, 20)")
+ // this.legging();
+ // },
+ // legging: function() {
+ //  Crafty.e("Leg").attr({x: this.x, y: this.y});
+ //  console.log("Leg it");
+   }
+ });
+
   Crafty.c('Pigeon', {
     init: function() {
       this.requires('Enemy, Delay, SpriteAnimation, spr_pigeon')
