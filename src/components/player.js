@@ -8,7 +8,7 @@
       this.requires('Actor, Delay, Gravity, LevelBounded, SpriteAnimation, Twoway, spr_player, Collision, WiredHitBox')
         .twoway(4.0, 4.0)
         .attr({_powerups: 0, _health: FULL_HP, _baking: false})
-        .collision(new Crafty.polygon([0,18], [18,0], [47,0], [65,18], [65,47], [47, 65], [18,65], [0,47]))
+        .pieShape()
         .gravity('Obstacle')
         .gravityConst(0.1)
         .onHit("Shit", function() {
@@ -28,9 +28,14 @@
         .animate('PlayerWalkingLeft', 0, 19, 1);
 
       this.bind("Moved", function(old) {
+        console.log("Player moved: (" + old.x + "," + old.y + ") => (" + this._x + "," + this._y + ")");
+
         var hits = this.hit("Obstacle");
 
-        this._baking = false;
+        if(this._baking) {
+          console.log("Baking interrupted by movement");
+          this._baking = false;
+        }
 
         if(hits) {
           // Encountered a solid obstacle?
@@ -135,6 +140,16 @@
       
     },
 
+    pieShape: function () {
+      this.collision(new Crafty.polygon([0,18], [18,0], [47,0], [65,18], [65,47], [47, 65], [18,65], [0,47]));
+      return this;
+    },
+
+    flatShape: function() {
+      this.collision(new Crafty.polygon([0,44], [65,44], [65,65], [0,65]));
+      return this;
+    },
+
     ants: function() {
       // Spend HP
       if (this.carried) {
@@ -143,14 +158,14 @@
       this.trigger("LoseHealth", 1);
       this.carried = true;
       
-      this.collision(new Crafty.polygon([0,44], [65,44], [65,65], [0,65]));
+      this.flatShape();
       
       this.delay(function() {
         this.carried = false;
         console.log("Carry-walk over");
         this.animate('PlayerRollingRight', 0, 0);
         this.animate('PlayerRollingLeft', 0, 0);
-        this.collision(new Crafty.polygon([0,18], [18,0], [47,0], [65,18], [65,47], [47, 65], [18,65], [0,47]));
+        this.pieShape();
 
       }, 5000);
 
