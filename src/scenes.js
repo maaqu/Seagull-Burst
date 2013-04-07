@@ -76,7 +76,7 @@ Crafty.scene("Loading", function () {
 //First level
 Crafty.scene('Level1', function() {
 
-  loadLevel("test");
+  loadLevel("tutorial");
 
 //Make victory condition
 
