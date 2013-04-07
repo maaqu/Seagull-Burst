@@ -8,7 +8,7 @@
 
 Crafty.c('Obstacle', {
     init: function() {
-      this.requires('2D, Canvas, Color');
+      this.requires('2D, Canvas, Color, Collision');
       
     }
   });

@@ -20,7 +20,8 @@
         "assets/stellarartwars.wav",
         "assets/tausta1.jpg",
         "assets/tausta2.jpg",
-        "assets/victory.jpg"
+        "assets/victory.jpg",
+        "assets/cafe.png",
       ],
       function() {
 
@@ -45,6 +46,10 @@
             spr_apple: [4,0],
         });
 
+        Crafty.sprite(98, 288, "assets/cafe.png", {
+            spr_cafe: [0,0]
+        });
+        
         // Start crafty and set a background color so that we can see it's working
         Crafty.init(800, 600);
         Crafty.background('#FFFFFF');
