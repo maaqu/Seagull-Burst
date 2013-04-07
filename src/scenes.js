@@ -10,7 +10,7 @@ Crafty.scene('Splashscreen', function() {
     seagull.tween({alpha: 0.0}, 50);
     logo.tween({alpha: 0.0}, 50);
     setTimeout(function(){
-      Crafty.scene('Menu');      
+      Crafty.scene('Menu');
     },1500);
   }, 3000);
 });
@@ -21,30 +21,30 @@ Crafty.scene('Menu', function() {
   var bg = Crafty.e("2D, DOM, Image, Tween")
     .image("assets/menubg.jpg")
     .attr({alpha: 1.0, x: 0, y: 0 });
-  
-  var ycoordinates = [275, 334, 397, 457];      
-  var xcoordinates = [460, 268, 452, 285];      
+
+  var ycoordinates = [275, 334, 397, 457];
+  var xcoordinates = [460, 268, 452, 285];
   var selectedindex = 0;
   var selector = Crafty.e("2D, DOM, Image, Tween")
     .image("assets/selector.png")
     .attr({alpha: 0.0, x: xcoordinates[selectedindex], y: ycoordinates[selectedindex] })
     .tween({alpha: 1.0}, 10)
-  
+
   this._onKeyDown = function(e) {
     if(e.key == Crafty.keys['ENTER']) {
       if (selectedindex == 0){Crafty.scene('Level1');}
-      else if (selectedindex == 1){Crafty.scene('Level2');}      
-      else if (selectedindex == 2){window.open('http://serveri.tulilaulu.net/hiscores.html','','width=200,height=600')}                  
-      else if (selectedindex == 3){Crafty.scene('Credits');}      
+      else if (selectedindex == 1){Crafty.scene('Level2');}
+      else if (selectedindex == 2){window.open('http://serveri.tulilaulu.net/hiscores.html','','width=200,height=600')}
+      else if (selectedindex == 3){Crafty.scene('Credits');}
     }
     else if(e.key == Crafty.keys['UP_ARROW']) {
-      if (selectedindex > 0){    
+      if (selectedindex > 0){
         selectedindex = selectedindex - 1;
         selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10);
       }
     }
     else if(e.key == Crafty.keys['DOWN_ARROW']) {
-      if (selectedindex < 3){     
+      if (selectedindex < 3){
         selectedindex = selectedindex + 1;
         selector.tween({x: xcoordinates[selectedindex], y: ycoordinates[selectedindex]}, 10);
       }
@@ -80,7 +80,7 @@ Crafty.scene('Level1', function() {
 
 //Make victory condition
 
-  
+
   //Make death condition
   this._onDeath = function() {
     Crafty.scene('Death');
@@ -98,7 +98,7 @@ Crafty.scene('Level2', function() {
 
 //Make victory condition
 
-  
+
   //Make death condition
   this._onDeath = function() {
     Crafty.scene('Death');
@@ -112,11 +112,11 @@ Crafty.scene('Level2', function() {
 //Death scene
 Crafty.scene('Death', function() {
   Crafty.e('2D, Canvas, Image').image("assets/death.jpg");
-  
+
   this._onKeyDown = function(e) {
     Crafty.scene('Menu');
   };
-             
+
   this.bind('KeyDown', this._onKeyDown);
 },function() {
   this.unbind("KeyDown", this._onKeyDown);
@@ -125,10 +125,10 @@ Crafty.scene('Death', function() {
 //Victory scene
 Crafty.scene('Victory', function() {
   Crafty.e('2D, Canvas, Image').image("assets/victory.jpg");
-    
-    this.bind('KeyDown', function(e) {
-      Crafty.scene('Menu');
-    });
+
+  this.bind('KeyDown', function(e) {
+    Crafty.scene('Menu');
+  });
 });
 
 //Credits scene
@@ -138,10 +138,8 @@ Crafty.scene('Credits', function() {
   this._onKeyDown = function(e) {
     Crafty.scene('Menu');
   };
-    
+
   this.bind('KeyDown', this._onKeyDown);
 },function() {
   this.unbind("KeyDown", this._onKeyDown);
 });
-
-

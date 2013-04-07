@@ -25,7 +25,7 @@
         .animate('PlayerRollingLeft', 0, 9, 7)
         .animate('PlayerWalkingRight', 0, 18, 1)
         .animate('PlayerWalkingLeft', 0, 19, 1);
-        
+
       this.bind("Moved", function(old) {
         var hits = this.hit("Obstacle");
 
@@ -135,14 +135,21 @@
 
     ants: function() {
       // Spend HP
+      if (this.carried) {
+        return;
+      }
       this.trigger("LoseHealth", 1);
       this.carried = true;
       this.delay(function() {
         this.carried = false;
         console.log("Carry-walk over");
+        this.animate('PlayerRollingRight', 0, 0);
+        this.animate('PlayerRollingLeft', 0, 0);
       }, 5000);
 
       // TODO: Change sprite to ant-carried
+      this.animate('PlayerWalkingRight', 0, 0);
+      this.animate('PlayerWalkingLeft', 0, 0);
 
 
       // TODO: Change collision box to flat
