@@ -13,6 +13,9 @@
         .onHit("Shit", function() {
           this.trigger("LoseHealth", 1);
         })
+        .onHit("Leg", function() {
+          this.trigger("LoseHealth", 7);
+        })
         .onHit("Powerup", function(powerups) {
           this._powerups += 1;
           var powerup = powerups[0].obj;
