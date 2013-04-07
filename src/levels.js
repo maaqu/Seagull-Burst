@@ -168,7 +168,7 @@
     mkHill(980, 450, 40, 40);
     mkHill(1100, 380, 20, 200);
     mkHill(1400, 380, 20, 100);
-    mkHill(1600, 320, 180, 50);
+    mkHill(1470, 420, 80, 50);
     mkHill(1650, 420, 80, 50);
     mkHill(1800, 330, 80, 100);
     mkHill(2000, 270, 230, 50);
@@ -181,7 +181,7 @@
     mkHill(4050, 150, 500, 50);
 
     level.addEntity(Crafty.e("2D, Canvas, spr_cafe")
-                    .attr({ x: 4752, y: 212}));
+                    .attr({ x: 4402, y: 212}));
 
     // Player
     level.addEntity(setupPlayer("BerryPie", 5, 500));
