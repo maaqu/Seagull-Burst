@@ -44,8 +44,8 @@
         console.log("spawning MONTY");
 
     
-    Crafty.e("Leg").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
-    Crafty.e("Leg").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
+    Crafty.e("Foot").attr({h: 500, x: attr.x, origY: -200, deltaY: 100});
+    Crafty.e("Foot").attr({h: 500, x: attr.x+300, origY: -200, deltaY: 0, delta: -1});
     Crafty.e("Monty").attr({x: attr.x});
 
     });

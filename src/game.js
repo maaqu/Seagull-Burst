@@ -6,7 +6,8 @@
       Crafty.load([
         "assets/pie_sprite.png",
         "assets/bird_sprite.png",
-        "assets/powerup_sprite.png"
+        "assets/powerup_sprite.png",
+	"assets/Monty_foot_sprite.png"
       ],
       function() {
 
@@ -18,6 +19,10 @@
           spr_seagull: [0,0],
           spr_pigeon: [0,2]
         });
+
+	Crafty.sprite(442, 397, "assets/Monty_foot_sprite.png", {
+	  spr_monty: [0,0],
+	});
         
         Crafty.sprite(30, 34, "assets/powerup_sprite.png", {
             spr_berry: [2,0],

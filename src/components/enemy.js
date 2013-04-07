@@ -16,9 +16,8 @@
 
   Crafty.c('Leg', {
     init: function() {
-      this.requires('Enemy, Delay, Color, Collision')
+      this.requires('2D, Canvas, Enemy, Delay, Collision')
       .attr({w: 200, h: 400, origY: 0, deltaY: 0, delta: 1})
-      .color("rgb(10, 10, 10)")
       .bind("EnterFrame", function() {
         if (this.deltaY > 170 && this.delta == 1){
           this.delta = -1;
@@ -43,7 +42,11 @@
  //  console.log("Leg it");
    }
  });
-
+ Crafty.c("Foot", {
+   init: function() {
+	this.requires("Leg, spr_monty")
+   }
+ });
   Crafty.c('Pigeon', {
     init: function() {
       this.requires('Enemy, Delay, SpriteAnimation, spr_pigeon')
