@@ -136,11 +136,11 @@
 
     carriedOverObstacle: function(entity) {
         var newY = entity[0].obj._y - this._h;
-  
+
         console.log("Carry: " + this.y + " => " + newY);
-  
+
         this.y = newY;
-      
+
     },
 
     pieShape: function () {
@@ -160,9 +160,9 @@
       }
       this.trigger("LoseHealth", 1);
       this.carried = true;
-      
+
       this.flatShape();
-      
+
       this.delay(function() {
         this.carried = false;
         console.log("Carry-walk over");
